@@ -1,10 +1,4 @@
 
-customer = {
-    'name' : 'Joe',
-    'directions' :  ['go straight', 'turn right', 'stop here'],
-    'fare' : 0
-}
-
 print("""
 
  ________  ______   _______   ________   __   ________   ________   __
@@ -19,6 +13,13 @@ print("""
 
 """)
 
+
+
+customer = {
+    'name' : 'Joe',
+    'directions' :  ['go straight', 'turn right', 'stop here'],
+    'fare' : 0
+}
 
 print("These are the directions: " + str(customer['directions'][0]) + ", " + str(customer['directions'][1]) + ", " + str(customer['directions'][2]))
 
