@@ -39,7 +39,8 @@ while i < 10:
 
     if action == '':
         print('Input a valid action.')
-    elif action == "view map":
+    #map is currently a placeholder -- will make more visable map in future
+    elif action == "view map":  
         print(""" 
         
 
