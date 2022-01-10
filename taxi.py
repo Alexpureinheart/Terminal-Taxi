@@ -15,7 +15,7 @@ print("""
 
 
 #movement scheme 
-actions = ['turn left', 'turn right', 'accelerate', 'reverse', 'view map']
+actions = ['turn left', 'turn right', 'accelerate', 'reverse', 'view map', 'check position']
 
 is_facing_east = True
 is_facing_west = False
@@ -69,6 +69,16 @@ while i < 10:
         
         
         """)
+    elif(action == "check position"):
+        if is_facing_east:
+            print('You are facing East. At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.')
+        elif is_facing_west:
+            print('You are facing West. At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.')
+        elif is_facing_south:
+            print('You are facing South. At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.')
+        elif is_facing_north:
+            print('You are facing North. At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.')
+
     else:
         if is_facing_east:
             match action:
