@@ -174,7 +174,7 @@ while i < 10:
 
 
 
-
+#rudimentary customer functionality -- will rework later
 
 """ customer = {
     'name' : 'Joe',
