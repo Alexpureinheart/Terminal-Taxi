@@ -95,11 +95,11 @@ while i < 10:
                 case 'accelerate':
                     y_coordinate += 1
                     i += 1
-                    print('y is now equal to ' + str(x_coordinate))
+                    print('y is now equal to ' + str(y_coordinate))
                 case 'reverse':
                     y_coordinate -= 1
                     i += 1 
-                    print('y is now equal to ' + str(x_coordinate)) 
+                    print('y is now equal to ' + str(y_coordinate)) 
                 case _:
                     'Input a valid action.'     
 
@@ -116,11 +116,11 @@ while i < 10:
                 case 'accelerate':
                     y_coordinate -= 1
                     i += 1
-                    print('y is now equal to ' + str(x_coordinate))
+                    print('y is now equal to ' + str(y_coordinate))
                 case 'reverse':
                     y_coordinate += 1
                     i += 1 
-                    print('y is now equal to ' + str(x_coordinate))
+                    print('y is now equal to ' + str(y_coordinate))
                 case _:
                     'Input a valid action.' 
 
