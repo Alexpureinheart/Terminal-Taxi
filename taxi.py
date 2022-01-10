@@ -14,8 +14,38 @@ print("""
 """)
 
 
+#movement scheme 
+actions = ['turn left', 'turn right', 'accelerate', 'reverse']
 
-customer = {
+is_facing_east = True
+is_facing_west = False
+is_facing_south = False
+is_facing_north = False
+
+x_coordinate = 0
+y_coordinate = 0
+
+print('You are facing East.')
+
+print('Input an action.')
+
+action = input()
+
+if is_facing_east == True and action == action[0]:
+    is_facing_east = False
+    is_facing_north = True
+    print("You are now facing North.")
+
+if is_facing_east == True and action == actions[2]:
+    x_coordinate += 1  
+    print("X = " + str(x_coordinate))
+
+
+
+
+
+
+""" customer = {
     'name' : 'Joe',
     'directions' :  ['go straight', 'turn right', 'stop here'],
     'fare' : 0
@@ -35,4 +65,4 @@ while i < len(customer['directions']):
 
     i += 1
 
-print('Thanks very much!' + ' You get ' + str(customer['fare']) + ' dollars.')
+print('Thanks very much!' + ' You get ' + str(customer['fare']) + ' dollars.') """
