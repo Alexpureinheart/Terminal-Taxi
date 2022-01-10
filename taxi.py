@@ -29,16 +29,106 @@ print('You are facing East.')
 
 print('Input an action.')
 
-action = input()
+i = 0
 
-if is_facing_east == True and action == action[0]:
-    is_facing_east = False
-    is_facing_north = True
-    print("You are now facing North.")
+while i < 10:
+    
 
-if is_facing_east == True and action == actions[2]:
-    x_coordinate += 1  
-    print("X = " + str(x_coordinate))
+    action = input()
+
+    if action == '':
+        print('Input a valid action.')
+    else:
+        if is_facing_east:
+            match action:
+                case 'turn left':
+                    is_facing_east = False
+                    is_facing_north = True
+                    print('You are facing North.')
+                case 'turn right':
+                    is_facing_east = False
+                    is_facing_south = True
+                    print('You are facing South.')
+                case 'accelerate':
+                    x_coordinate += 1
+                    i += 1
+                    print('x is now equal to ' + str(x_coordinate))
+                case 'reverse':
+                    x_coordinate -= 1
+                    i += 1 
+                    print('x is now equal to ' + str(x_coordinate)) 
+                case _:
+                    'Input a valid action.'    
+                
+        if is_facing_west:
+            match action:
+                case 'turn left':
+                    is_facing_west = False
+                    is_facing_south = True
+                    print('You are facing South.')
+                case 'turn right':
+                    is_facing_west = False
+                    is_facing_north = True 
+                    print('You are facing North.')
+                case 'accelerate':
+                    x_coordinate -= 1
+                    i += 1
+                    print('x is now equal to ' + str(x_coordinate))
+                case 'reverse':
+                    x_coordinate += 1 
+                    i += 1
+                    print('x is now equal to ' + str(x_coordinate))
+                case _:
+                    'Input a valid action.'    
+
+        if is_facing_north:
+            match action:
+                case 'turn left':
+                    is_facing_north = False
+                    is_facing_west = True
+                    print('You are facing West.')
+                case 'turn right':
+                    is_facing_north = False
+                    is_facing_east = True
+                    print('You are facing East.')
+                case 'accelerate':
+                    y_coordinate += 1
+                    i += 1
+                    print('x is now equal to ' + str(x_coordinate))
+                case 'reverse':
+                    y_coordinate -= 1
+                    i += 1 
+                    print('x is now equal to ' + str(x_coordinate)) 
+                case _:
+                    'Input a valid action.'     
+
+        if is_facing_south:
+            match action:
+                case 'turn left':
+                    is_facing_south = False
+                    is_facing_east = True
+                    print('You are facing East.')
+                case 'turn right':
+                    is_facing_south = False
+                    is_facing_west = True
+                    print('You are facing West.')
+                case 'accelerate':
+                    y_coordinate -= 1
+                    i += 1
+                    print('x is now equal to ' + str(x_coordinate))
+                case 'reverse':
+                    y_coordinate += 1
+                    i += 1 
+                    print('x is now equal to ' + str(x_coordinate))
+                case _:
+                    'Input a valid action.' 
+
+           
+                  
+
+
+        
+        
 
 
 
