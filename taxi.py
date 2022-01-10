@@ -25,9 +25,10 @@ is_facing_north = False
 x_coordinate = 0
 y_coordinate = 0
 
+print('Input an action.')
 print('You are facing East.')
 
-print('Input an action.')
+
 
 i = 0
 
@@ -60,7 +61,7 @@ while i < 10:
                 case _:
                     'Input a valid action.'    
                 
-        if is_facing_west:
+        elif is_facing_west:
             match action:
                 case 'turn left':
                     is_facing_west = False
@@ -81,7 +82,7 @@ while i < 10:
                 case _:
                     'Input a valid action.'    
 
-        if is_facing_north:
+        elif is_facing_north:
             match action:
                 case 'turn left':
                     is_facing_north = False
@@ -94,15 +95,15 @@ while i < 10:
                 case 'accelerate':
                     y_coordinate += 1
                     i += 1
-                    print('x is now equal to ' + str(x_coordinate))
+                    print('y is now equal to ' + str(x_coordinate))
                 case 'reverse':
                     y_coordinate -= 1
                     i += 1 
-                    print('x is now equal to ' + str(x_coordinate)) 
+                    print('y is now equal to ' + str(x_coordinate)) 
                 case _:
                     'Input a valid action.'     
 
-        if is_facing_south:
+        elif is_facing_south:
             match action:
                 case 'turn left':
                     is_facing_south = False
@@ -115,11 +116,11 @@ while i < 10:
                 case 'accelerate':
                     y_coordinate -= 1
                     i += 1
-                    print('x is now equal to ' + str(x_coordinate))
+                    print('y is now equal to ' + str(x_coordinate))
                 case 'reverse':
                     y_coordinate += 1
                     i += 1 
-                    print('x is now equal to ' + str(x_coordinate))
+                    print('y is now equal to ' + str(x_coordinate))
                 case _:
                     'Input a valid action.' 
 
