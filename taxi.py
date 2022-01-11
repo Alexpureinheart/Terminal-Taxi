@@ -162,8 +162,6 @@ i = 0
 
 while i < 10:
 
-     
-
     action = input()
 
     if action == '':
@@ -172,7 +170,7 @@ while i < 10:
     elif action == "view map":  
        view_map()
     else:
-        control_taxi(action, x_coordinate, y_coordinate)
+        control_taxi(action, x_coordinate, y_coordinate) # -- *bug* this function does not actually increment X or Y 
         
            
                   
