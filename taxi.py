@@ -14,34 +14,15 @@ print("""
 """)
 
 
-#movement scheme 
+#movement variables 
 actions = ['turn left', 'turn right', 'accelerate', 'reverse', 'view map', 'check position']
-
-is_facing_east = True
-is_facing_west = False
-is_facing_south = False
-is_facing_north = False
 
 x_coordinate = 0
 y_coordinate = 0
 
-print('Input an action.')
-print('You are facing East.')
-
-
-
-i = 0
-
-while i < 10:
-    
-
-    action = input()
-
-    if action == '':
-        print('Input a valid action.')
-    #map is currently a placeholder -- will make more visable map in future
-    elif action == "view map":  
-        print(""" 
+#command functions
+def view_map():
+     print(""" 
         
 
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
@@ -70,101 +51,129 @@ while i < 10:
         
         
         """)
-    elif(action == "check position"):
-        if is_facing_east:
-            print('You are facing East. At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.')
-        elif is_facing_west:
-            print('You are facing West. At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.')
-        elif is_facing_south:
-            print('You are facing South. At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.')
-        elif is_facing_north:
-            print('You are facing North. At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.')
 
-    else:
+
+
+def control_taxi(action, x_position, y_position):
+    def check_position():
         if is_facing_east:
-            match action:
-                case 'turn left':
-                    is_facing_east = False
-                    is_facing_north = True
-                    print('You are facing North.')
-                case 'turn right':
-                    is_facing_east = False
-                    is_facing_south = True
-                    print('You are facing South.')
-                case 'accelerate':
-                    x_coordinate += 1
-                    i += 1
-                    print('x is now equal to ' + str(x_coordinate))
-                case 'reverse':
-                    x_coordinate -= 1
-                    i += 1 
-                    print('x is now equal to ' + str(x_coordinate)) 
-                case _:
-                    'Input a valid action.'    
+            print('You are facing East. At x: ' + str(x_position) + ' and y: ' + str(y_position) + '.')
+        elif is_facing_west:
+            print('You are facing West. At x: ' + str(x_position) + ' and y: ' + str(y_position) + '.')
+        elif is_facing_south:
+            print('You are facing South. At x: ' + str(x_position) + ' and y: ' + str(y_position) + '.')
+        elif is_facing_north:
+            print('You are facing North. At x: ' + str(x_position) + ' and y: ' + str(y_position) + '.')
+    
+    is_facing_east = True
+    is_facing_west = False
+    is_facing_south = False
+    is_facing_north = False  
+
+    if action == "check position":
+        check_position()
+
+    elif is_facing_east:
+        match action:
+            case 'turn left':
+                is_facing_east = False
+                is_facing_north = True
+                print('You are facing North.')
+            case 'turn right':
+                is_facing_east = False
+                is_facing_south = True
+                print('You are facing South.')
+            case 'accelerate':
+                x_position += 1
+                print('x is now equal to ' + str(x_position))
+            case 'reverse':
+                x_position -= 1 
+                print('x is now equal to ' + str(x_position)) 
+            case _:
+                'Input a valid action.'    
                 
-        elif is_facing_west:
-            match action:
-                case 'turn left':
-                    is_facing_west = False
-                    is_facing_south = True
-                    print('You are facing South.')
-                case 'turn right':
-                    is_facing_west = False
-                    is_facing_north = True 
-                    print('You are facing North.')
-                case 'accelerate':
-                    x_coordinate -= 1
-                    i += 1
-                    print('x is now equal to ' + str(x_coordinate))
-                case 'reverse':
-                    x_coordinate += 1 
-                    i += 1
-                    print('x is now equal to ' + str(x_coordinate))
-                case _:
-                    'Input a valid action.'    
+    elif is_facing_west:
+        match action:
+            case 'turn left':
+                is_facing_west = False
+                is_facing_south = True
+                print('You are facing South.')
+            case 'turn right':
+                is_facing_west = False
+                is_facing_north = True 
+                print('You are facing North.')
+            case 'accelerate':
+                x_position -= 1
+                print('x is now equal to ' + str(x_position))
+            case 'reverse':
+                x_position += 1 
+                print('x is now equal to ' + str(x_position))
+            case _:
+                'Input a valid action.'    
 
-        elif is_facing_north:
-            match action:
-                case 'turn left':
-                    is_facing_north = False
-                    is_facing_west = True
-                    print('You are facing West.')
-                case 'turn right':
-                    is_facing_north = False
-                    is_facing_east = True
-                    print('You are facing East.')
-                case 'accelerate':
-                    y_coordinate += 1
-                    i += 1
-                    print('y is now equal to ' + str(y_coordinate))
-                case 'reverse':
-                    y_coordinate -= 1
-                    i += 1 
-                    print('y is now equal to ' + str(y_coordinate)) 
-                case _:
-                    'Input a valid action.'     
+    elif is_facing_north:
+        match action:
+            case 'turn left':
+                is_facing_north = False
+                is_facing_west = True
+                print('You are facing West.')
+            case 'turn right':
+                is_facing_north = False
+                is_facing_east = True
+                print('You are facing East.')
+            case 'accelerate':
+                y_position += 1
+                print('y is now equal to ' + str(y_position))
+            case 'reverse':
+                y_position -= 1
+                print('y is now equal to ' + str(y_position)) 
+            case _:
+                'Input a valid action.'     
 
-        elif is_facing_south:
-            match action:
-                case 'turn left':
-                    is_facing_south = False
-                    is_facing_east = True
-                    print('You are facing East.')
-                case 'turn right':
-                    is_facing_south = False
-                    is_facing_west = True
-                    print('You are facing West.')
-                case 'accelerate':
-                    y_coordinate -= 1
-                    i += 1
-                    print('y is now equal to ' + str(y_coordinate))
-                case 'reverse':
-                    y_coordinate += 1
-                    i += 1 
-                    print('y is now equal to ' + str(y_coordinate))
-                case _:
-                    'Input a valid action.' 
+    elif is_facing_south:
+        match action:
+            case 'turn left':
+                is_facing_south = False
+                is_facing_east = True
+                print('You are facing East.')
+            case 'turn right':
+                is_facing_south = False
+                is_facing_west = True
+                print('You are facing West.')
+            case 'accelerate':
+                y_position -= 1
+                print('y is now equal to ' + str(y_position))
+            case 'reverse':
+                y_position += 1
+                print('y is now equal to ' + str(y_position))
+            case _:
+                'Input a valid action.' 
 
+
+
+
+
+print('Input an action.')
+print('You are facing East.')
+
+
+
+i = 0
+
+while i < 10:
+
+     
+
+    action = input()
+
+    if action == '':
+        print('Input a valid action.')
+    #map is currently a placeholder -- will make more visable map in future
+    elif action == "view map":  
+       view_map()
+    else:
+        control_taxi(action, x_coordinate, y_coordinate)
+        
            
                   
 
