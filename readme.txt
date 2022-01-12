@@ -11,4 +11,6 @@ Roadmap:
 grid to keep track of player position. - Taxi can "turn left" and "turn right" and "accelerate" or "reverse". 
 *may make this more nuanced later . . .
 
-2. Build customer generator!  
+2. Create playspace and map -- Will use a grid scheme to create visitable desitnations and boundaries.  
+
+3. Build customer generator!  
