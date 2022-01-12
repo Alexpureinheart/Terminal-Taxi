@@ -172,8 +172,8 @@ while i < 10:
 
     action = input()
 
-    if action == '':
-        print('Input a valid action.')
+    if action not in actions:
+        print('Input a valid action. Possible actions are ' + str(actions))
     #map is currently a placeholder -- will make more visable map in future
     elif action == "view map":  
        view_map()
