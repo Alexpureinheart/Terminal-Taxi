@@ -20,6 +20,11 @@ actions = ['turn left', 'turn right', 'accelerate', 'reverse', 'view map', 'chec
 x_coordinate = 0
 y_coordinate = 0
 
+is_facing_east = True
+is_facing_west = False
+is_facing_south = False
+is_facing_north = False 
+
 #command functions
 def view_map():
      print(""" 
@@ -54,21 +59,25 @@ def view_map():
 
 
 
-def control_taxi(action, x_position, y_position):
+def control_taxi(action):
+    
+    global is_facing_east
+    global is_facing_west
+    global is_facing_south
+    global is_facing_north
+
+    global x_coordinate
+    global y_coordinate 
+
     def check_position():
         if is_facing_east:
-            print('You are facing East. At x: ' + str(x_position) + ' and y: ' + str(y_position) + '.')
+            print('You are facing East. At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.')
         elif is_facing_west:
-            print('You are facing West. At x: ' + str(x_position) + ' and y: ' + str(y_position) + '.')
+            print('You are facing West. At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.')
         elif is_facing_south:
-            print('You are facing South. At x: ' + str(x_position) + ' and y: ' + str(y_position) + '.')
+            print('You are facing South. At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.')
         elif is_facing_north:
-            print('You are facing North. At x: ' + str(x_position) + ' and y: ' + str(y_position) + '.')
-    
-    is_facing_east = True
-    is_facing_west = False
-    is_facing_south = False
-    is_facing_north = False  
+            print('You are facing North. At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.') 
 
     if action == "check position":
         check_position()
@@ -84,11 +93,11 @@ def control_taxi(action, x_position, y_position):
                 is_facing_south = True
                 print('You are facing South.')
             case 'accelerate':
-                x_position += 1
-                print('x is now equal to ' + str(x_position))
+                x_coordinate += 1
+                print('x is now equal to ' + str(x_coordinate))
             case 'reverse':
-                x_position -= 1 
-                print('x is now equal to ' + str(x_position)) 
+                x_coordinate -= 1 
+                print('x is now equal to ' + str(x_coordinate)) 
             case _:
                 'Input a valid action.'    
                 
@@ -103,11 +112,11 @@ def control_taxi(action, x_position, y_position):
                 is_facing_north = True 
                 print('You are facing North.')
             case 'accelerate':
-                x_position -= 1
-                print('x is now equal to ' + str(x_position))
+                x_coordinate -= 1
+                print('x is now equal to ' + str(x_coordinate))
             case 'reverse':
-                x_position += 1 
-                print('x is now equal to ' + str(x_position))
+                x_coordinate += 1 
+                print('x is now equal to ' + str(x_coordinate))
             case _:
                 'Input a valid action.'    
 
@@ -122,11 +131,11 @@ def control_taxi(action, x_position, y_position):
                 is_facing_east = True
                 print('You are facing East.')
             case 'accelerate':
-                y_position += 1
-                print('y is now equal to ' + str(y_position))
+                y_coordinate += 1
+                print('y is now equal to ' + str(y_coordinate))
             case 'reverse':
-                y_position -= 1
-                print('y is now equal to ' + str(y_position)) 
+                y_coordinate -= 1
+                print('y is now equal to ' + str(y_coordinate)) 
             case _:
                 'Input a valid action.'     
 
@@ -141,11 +150,11 @@ def control_taxi(action, x_position, y_position):
                 is_facing_west = True
                 print('You are facing West.')
             case 'accelerate':
-                y_position -= 1
-                print('y is now equal to ' + str(y_position))
+                y_coordinate -= 1
+                print('y is now equal to ' + str(y_coordinate))
             case 'reverse':
-                y_position += 1
-                print('y is now equal to ' + str(y_position))
+                y_coordinate += 1
+                print('y is now equal to ' + str(y_coordinate))
             case _:
                 'Input a valid action.' 
 
@@ -170,7 +179,7 @@ while i < 10:
     elif action == "view map":  
        view_map()
     else:
-        control_taxi(action, x_coordinate, y_coordinate) # -- *bug* this function does not actually increment X or Y 
+        control_taxi(action) # -- *bug* this function does not actually increment X or Y *Squashed*
         
            
                   
