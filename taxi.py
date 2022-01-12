@@ -161,6 +161,7 @@ def control_taxi(action):
 
 
 print('Input an action.')
+print('Possible actions are ' + str(actions))
 print('You are facing East.')
 
 
