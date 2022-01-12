@@ -158,13 +158,11 @@ def control_taxi(action):
 
 
 
-
+#game scripting
 
 print('Input an action.')
 print('Possible actions are ' + str(actions))
 print('You are facing East.')
-
-
 
 i = 0
 
@@ -178,7 +176,7 @@ while i < 10:
     elif action == "view map":  
        view_map()
     else:
-        control_taxi(action) # -- *bug* this function does not actually increment X or Y *Squashed*
+        control_taxi(action) 
         
            
                   
