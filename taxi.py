@@ -7,7 +7,23 @@ y_coordinate = 0
 is_facing_east = True
 is_facing_west = False
 is_facing_south = False
-is_facing_north = False 
+is_facing_north = False
+
+#game objects (dictionaries)
+
+class Location:
+    def __init__(self, name, x_coordinate, y_coordinate):
+        self.name = name
+        self.x_coordinate = x_coordinate
+        self.y_coordinate = y_coordinate 
+    def get_name(self):
+        return self._name
+    def get_x_coordinate(self):
+        return self._x_coordinate
+    def get_y_coordinat(self):
+        return self._y_coordinate
+
+location_1 = Location("first_location", 3, 0)
 
 #command functions
 def view_map():
@@ -40,6 +56,28 @@ QBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
         """)
 
 
+def check_position():
+    
+    global is_facing_east
+    global is_facing_west
+    global is_facing_south
+    global is_facing_north
+
+    global x_coordinate
+    global y_coordinate 
+
+    if is_facing_east:
+        print('You are facing East.')
+    elif is_facing_west:
+        print('You are facing West.')
+    elif is_facing_south:
+        print('You are facing South.')
+    elif is_facing_north:
+        print('You are facing North.')
+    print('At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.')
+    if x_coordinate == location_1.x_coordinate and y_coordinate == location_1.y_coordinate:
+        print('You are at location 1.')
+         
 
 def control_taxi(action):
     
@@ -51,20 +89,9 @@ def control_taxi(action):
     global x_coordinate
     global y_coordinate 
 
-    def check_position():
-        if is_facing_east:
-            print('You are facing East. At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.')
-        elif is_facing_west:
-            print('You are facing West. At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.')
-        elif is_facing_south:
-            print('You are facing South. At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.')
-        elif is_facing_north:
-            print('You are facing North. At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.') 
 
-    if action == "check position":
-        check_position()
 
-    elif is_facing_east:
+    if is_facing_east:
         match action:
             case 'turn left':
                 is_facing_east = False
@@ -172,6 +199,8 @@ while i < 10:
         print('Input a valid action. Possible actions are ' + str(actions))
     elif action == "view map":  
        view_map()
+    elif action == "check position":
+        check_position()
     else:
         control_taxi(action) 
         
