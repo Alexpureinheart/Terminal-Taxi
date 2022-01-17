@@ -14,3 +14,4 @@ grid to keep track of player position. - Taxi can "turn left" and "turn right" a
 2. Create playspace and map -- Will use a grid scheme to create visitable desitnations and boundaries.  
 
 3. Build customer generator!  
+
