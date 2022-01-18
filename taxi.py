@@ -1,8 +1,8 @@
 #movement variables 
 actions = ['turn left', 'turn right', 'accelerate', 'reverse', 'view map', 'check position']
 
-x_coordinate = 0
-y_coordinate = 0
+x_coordinate = 2
+y_coordinate = 4
 
 is_facing_east = True
 is_facing_west = False
@@ -10,6 +10,8 @@ is_facing_south = False
 is_facing_north = False
 
 #game objects (dictionaries)
+
+#locations
 
 class Location:
     def __init__(self, name, x_coordinate, y_coordinate):
@@ -23,7 +25,7 @@ class Location:
     def get_y_coordinat(self):
         return self._y_coordinate
 
-location_1 = Location("first_location", 3, 0)
+location_1 = Location("first_location", 2, 4)
 
 #command functions
 def view_map():
