@@ -104,8 +104,9 @@ def check_position():
     elif is_facing_north:
         print('You are facing North.')
     print('At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.')
-    if x_coordinate == location_1.x_coordinate and y_coordinate == location_1.y_coordinate:
-        print('You are at location 1.')
+    for i in range(len(location_list)):
+        if x_coordinate in location_list[i].x_coordinates and y_coordinate in location_list[i].y_coordinates:
+            print('You are at ' + location_list[i].name + '.')
          
 
 def control_taxi(action):
