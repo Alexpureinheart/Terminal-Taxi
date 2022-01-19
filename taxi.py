@@ -43,7 +43,7 @@ location_15 = Location('location 15', [18, 19, 20], [7, 8, 9])
 location_16 = Location('location 16', [19, 20, 21], [4, 5, 6])
 location_17 = Location('location 17', [21, 22, 23, 24], [7, 8, 9, 10, 11])
 location_18 = Location('location 18', [24, 25, 26, 27, 28], [6, 7, 8, 9])
-location_19 = Location('location 19', [7, 8, 9, 10, 11, 12, 13, 14, 15, 16], [2, 3, 4])
+location_19 = Location('location 19', [7, 8, 9, 10, 11, 12, 13, 14, 15, 16], [2, 3, 4, 5])
 location_20 = Location('location 20', [21, 22, 23, 24, 25, 26, 27], [1, 2, 3, 4, 5, 6, 7])
 
 location_list = [location_1, location_2, location_3, location_4, location_5, location_6, location_7,
