@@ -34,7 +34,7 @@ location_6 = Location('location 6', [22, 23, 24], [10, 11, 12, 13])
 location_7 = Location('location 7', [25, 26, 27], [10, 11, 12, 13])
 location_8 = Location('location 8', [2, 3, 4, 5], [7, 8, 9])
 location_9 = Location('location 9', [2, 3, 4, 5], [4, 5, 6])
-location_10 = Location('location 10', [6, 7, 8], [6, 7, 8, 9])
+location_10 = Location('location 10', [6, 7, 8, 9], [6, 7, 8])
 location_11 = Location('location 11', [8, 9, 10], [7, 8])
 location_12 = Location('location 12', [11, 12, 13, 14], [7, 8, 9])
 location_13 = Location('location 13', [9, 10, 11, 12, 13], [4, 5, 6])
@@ -43,13 +43,25 @@ location_15 = Location('location 15', [18, 19, 20], [7, 8, 9])
 location_16 = Location('location 16', [19, 20, 21], [4, 5, 6])
 location_17 = Location('location 17', [21, 22, 23, 24], [7, 8, 9, 10, 11])
 location_18 = Location('location 18', [24, 25, 26, 27, 28], [6, 7, 8, 9])
-location_19 = Location('location 19', [7, 8, 9, 10, 11, 12, 13, 14, 15, 16], [2, 3, 4, 5])
+location_19 = Location('location 19', [7, 8, 9, 10, 11, 12, 13, 14, 15, 16], [2, 3, 4])
 location_20 = Location('location 20', [21, 22, 23, 24, 25, 26, 27], [1, 2, 3, 4, 5, 6, 7])
 
 location_list = [location_1, location_2, location_3, location_4, location_5, location_6, location_7,
 location_8, location_9, location_10, location_11, location_12, location_13, location_14, location_15,
 location_16, location_17, location_18, location_19, location_20]
 
+boundary_top = Location('side walk', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28], [12, 13])
+boundary_bottom = Location('sea', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28], [1, 2]) 
+boundary_left = Location('side walk', [3, 4, 5, 6, 7], [5, 6, 7, 8, 9, 10])
+boundary_middle_left = Location('side walk', [9, 10, 11, 12], [5, 6, 7, 8, 9, 10])
+boundary_middle = Location('side walk', [14, 15, 16, 17], [5, 6, 7, 8, 9, 10])
+boundary_middle_right_1 = Location('side walk', [19, 20], [5, 6, 7, 8, 9, 10])
+boundary_middle_right_2 = Location('side walk', [21, 23], [8, 9])
+boundary_right = Location('side walk', [25, 27], [6, 7, 8, 9, 10])
+boundary_lower_right = Location('harbor', [22, 23, 24, 25, 26, 27, 28], [3, 4, 5, 6])
+
+boundary_list = [boundary_top, boundary_bottom, boundary_left, boundary_middle_left, boundary_middle, boundary_middle_right_1,
+boundary_middle_right_2, boundary_right, boundary_lower_right]
 
 
 
@@ -104,6 +116,7 @@ def check_position():
     elif is_facing_north:
         print('You are facing North.')
     print('At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.')
+    
     for i in range(len(location_list)):
         if x_coordinate in location_list[i].x_coordinates and y_coordinate in location_list[i].y_coordinates:
             print('You are at ' + location_list[i].name + '.')
