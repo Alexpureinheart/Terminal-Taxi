@@ -15,6 +15,7 @@ Roadmap:
 -Added location class
 -Added basic logic for location detection using "check position" command in-game. 
 -Locations will be fixed 
+-Currently working on implenting boundaries ...
 
 Current List of Locations for Refference ('O' means they've been added to the game):
 
