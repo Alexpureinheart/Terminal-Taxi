@@ -1,3 +1,5 @@
+import random
+
 #movement variables 
 actions = ['turn left', 'turn right', 'accelerate', 'reverse', 'view map', 'check position']
 
@@ -10,6 +12,10 @@ is_facing_south = False
 is_facing_north = False
 
 #game objects (dictionaries)
+
+#customer system
+
+
 
 #locations
 
