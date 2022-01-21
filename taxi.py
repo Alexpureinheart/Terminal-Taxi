@@ -238,6 +238,13 @@ i = 0
 
 while i < 10:
 
+    for i in range(len(boundary_list)):
+        if x_coordinate in boundary_list[i].x_coordinates and y_coordinate in boundary_list[i].y_coordinates:
+            if boundary_list[i].name == 'side walk':
+                print('You drove onto the ' + boundary_list[i].name + '.')
+            elif boundary_list[i].name == 'sea':
+                print('You drove into the ' + boundary_list[i].name + '.')
+
     action = input()
 
     if action not in actions:
