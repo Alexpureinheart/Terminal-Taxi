@@ -15,7 +15,14 @@ is_facing_north = False
 
 #customer system
 
+first_names = ['Arandeep', 'Helen', 'Marianne', 'Madiha', 'Shazia', 'Rupert', 'Eleni', 'Tadhg', 'Tayyib',
+'Ameer', 'Ihsan', 'Luna', 'Chase', 'Addie', 'Velma', 'Ayush', 'Rubi', 'Ariadne', 'Ziva', 'Lani']
 
+last_names = ['Galloway', 'Dawe', 'Buchanan', 'Bush', 'Mcdowell', 'Guzman', 'Villanueva', 'Henson', 'Park',
+ 'Coates', 'Glover', 'Hicks', 'Barnes', 'Petersen', 'Hutchinson', 'Moyer', 'Holmes', 'Lennon', 'Pitt', 'Pearson']      
+
+
+ 
 
 #locations
 
