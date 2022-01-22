@@ -21,7 +21,19 @@ first_names = ['Arandeep', 'Helen', 'Marianne', 'Madiha', 'Shazia', 'Rupert', 'E
 last_names = ['Galloway', 'Dawe', 'Buchanan', 'Bush', 'Mcdowell', 'Guzman', 'Villanueva', 'Henson', 'Park',
  'Coates', 'Glover', 'Hicks', 'Barnes', 'Petersen', 'Hutchinson', 'Moyer', 'Holmes', 'Lennon', 'Pitt', 'Pearson']      
 
+class Customer:
+    def __init__(self, first_name, last_name, destination):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.destination = destination
 
+def customer_generator():
+    global first_names
+    global last_names
+    global location_list
+    
+    return Customer(first_names[random.randint(0, len(first_names))], last_names[random.randint(0, len(last_names))],
+    location_list[random.randint(0, len(location_list))])
  
 
 #locations
@@ -257,6 +269,11 @@ while i < 10:
                 print('You drove onto the ' + boundary_list[i].name + '.')
             elif boundary_list[i].name == 'sea':
                 print('You drove into the ' + boundary_list[i].name + '.')
+
+    customer = customer_generator()
+    print(customer.first_name)
+    print(customer.last_name)
+    print(customer.destination.name) 
 
     action = input()
 
