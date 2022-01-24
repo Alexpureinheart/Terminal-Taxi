@@ -14,7 +14,7 @@ is_facing_north = False
 has_customer = False
 customer_exists = False
 
-customer_interaction_determiner = random.randint(1, 10)
+customer_interaction_determiner = 0
 
 #game objects (dictionaries)
 #customer system
@@ -36,8 +36,8 @@ def customer_generator():
     global last_names
     global location_list
     
-    return Customer(first_names[random.randint(0, len(first_names) % len(first_names))], last_names[random.randint(0, len(last_names) % len(last_names))],
-    location_list[random.randint(0, len(location_list) % len(location_list))])
+    return Customer(first_names[random.randint(0, len(first_names) - 1)], last_names[random.randint(0, len(last_names) - 1)],
+    location_list[random.randint(0, len(location_list) - 1)])
  
 
 #locations
@@ -152,7 +152,44 @@ def check_position():
          
 def hit_the_break():
     print('You have stopped.')
+
+def customer_interaction(customer):
+
+    global x_coordinate
+    global y_coordinate
     
+    print('The customer gets into your cab.')
+    print('"Can you take me to "' + customer.destination.name + '?')
+    print('Possible responses: "Sorry.", "Sure!"')
+    while True:
+        response = input()   
+        if response == "Sorry.":
+            print('"Bummer."')
+            print('The customer gets out.')
+            customer_exists = False
+            break  
+        elif response == "Sure!":
+            print('"Thanks!"')
+            has_customer = True
+            while has_customer == True:
+                action = input()
+                if action not in actions:
+                    print('Input a valid action. Possible actions are ' + str(actions))
+                elif action == "view map":  
+                    view_map()
+                elif action == "check position":
+                    check_position()
+                    print('The customer is sitting in the back seat.')
+                elif action == "break":
+                    hit_the_break() 
+                else:
+                    control_taxi(action)
+                    if x_coordinate in customer.destination.x_coordinates and y_coordinate in customer.destination.y_coordinates:
+                        print('"Thanks! Let me out here!"')
+                        break
+            break
+        else:
+            print('Please enter a valid response.') 
 
 def control_taxi(action):
     
@@ -270,6 +307,9 @@ i = 0
 
 while i < 10:
 
+    customer_interaction_determiner = random.randint(1, 10)
+    print(customer_interaction_determiner)
+
     for i in range(len(boundary_list)):
         if x_coordinate in boundary_list[i].x_coordinates and y_coordinate in boundary_list[i].y_coordinates:
             if boundary_list[i].name == 'side walk':
@@ -278,12 +318,12 @@ while i < 10:
                 print('You drove into the ' + boundary_list[i].name + '.')
 
     customer = customer_generator()
-    #print(customer.first_name)
-    #print(customer.last_name)
-    #print(customer.destination.name) 
+    print(customer.first_name)
+    print(customer.last_name)
+    print(customer.destination.name) 
 
     
-    if customer_interaction_determiner >= 0 and has_customer == False:
+    if customer_interaction_determiner >= 6 and has_customer == False:
         print("A customer is hailing your taxi!")
         customer_exists = True
 
@@ -297,41 +337,7 @@ while i < 10:
         check_position()
     elif customer_exists == True and action == "break": #this is the customer interaction code -- may wrap in function
         hit_the_break()
-        print('The customer gets into your cab.')
-        print('"Can you take me to "' + customer.destination.name + '?')
-        print('Possible responses: "Sorry.", "Sure!"')
-        while True:
-            response = input()   
-            if response == "Sorry.":
-                print('"Bummer."')
-                print('The customer gets out.')
-                customer_exists = False
-                break  
-            elif response == "Sure!":
-                print('"Thanks!"')
-                has_customer = True
-                while has_customer == True:
-                    action = input()
-                    if action not in actions:
-                        print('Input a valid action. Possible actions are ' + str(actions))
-                    elif action == "view map":  
-                        view_map()
-                    elif action == "check position":
-                        check_position()
-                        print('The customer is sitting in the back seat.')
-                    elif action == "break":
-                        hit_the_break() 
-                    else:
-                        control_taxi(action)
-                        if x_coordinate in customer.destination.x_coordinates and y_coordinate in customer.destination.y_coordinates:
-                            print('"Thanks! Let me out here!"')
-                            break
-                break
-            else:
-                print('Please enter a valid response.') 
-        
-
-              
+        customer_interaction(customer)      
     elif action == "break":
         hit_the_break() 
     else:
