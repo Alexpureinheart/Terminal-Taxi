@@ -23,6 +23,7 @@ what the driver sees as they look forward, since when people drive, they are typ
 -Boundaries implimented
 -Need to create intersections and stop lights to make interactions easier . . .
 -Will add streetnames 
+-Will give the locations names -- e.g. -- "The Library" , "Joe's Pizza" etc. 
 
 3. Customer interactions
 -Customers are randomly generated with names and destinations . . . 
