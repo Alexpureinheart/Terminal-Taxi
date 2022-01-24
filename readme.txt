@@ -15,7 +15,17 @@ Roadmap:
 -Added location class
 -Added basic logic for location detection using "check position" command in-game. 
 -Locations will be fixed 
--Currently working on implenting boundaries ...
+-Boundaries implimented
+-Need to create intersections and stop lights to make interactions easier . . .
+-Will add streetnames 
+
+3. Customer interactions
+-Customers are randomly generated with names and destinations . . . 
+-Will add tip function
+-If time permits, will give customers randomly generated personalities with speech patterns that are dependent on those. 
+
+4. 
+
 
 Current List of Locations for Refference ('O' means they've been added to the game):
 
