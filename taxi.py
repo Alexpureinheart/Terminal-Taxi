@@ -16,6 +16,8 @@ customer_exists = False
 
 customer_interaction_determiner = 0
 
+cardinal_direction = 'East'
+
 #game objects (dictionaries)
 #customer system
 
@@ -82,14 +84,14 @@ location_16, location_17, location_18, location_19, location_20]
 oak_street = Location('Oak Street', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28], [11])
 silver_street = Location('Silver Street', [2], [4,5,6,7,8,9,10,11])
 green_road = Location('Green Road', [8], [4,5,6,7,8,9,10,11])
-litte_street = Location('Little Street', [13], [4,5,6,7,8,9,10,11])
+little_street = Location('Little Street', [13], [4,5,6,7,8,9,10,11])
 saxon_way = Location('Saxon Way', [18], [4,5,6,7,8,9,10,11])
-bond_ave_1 = Location('Bond Avenue', [21], [4,5,6,7])
+bond_ave_1 = Location('Bond Avenue', [21], [4, 5, 6, 7])
 bond_ave_2 = Location('Bond Avenue', [21, 22, 23, 24], [7])
-bond_ave_3 = Location()
+bond_ave_3 = Location('Bond Avenue', [24], [7, 8, 9, 10, 11])
+sandy_boulevard = Location('Sandy Boulevard', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21], [4])
 
-
-
+street_list = [oak_street, silver_street, green_road, little_street, saxon_way, bond_ave_1, bond_ave_2, bond_ave_3, sandy_boulevard]
 
 boundary_top = Location('side walk', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28], [12, 13])
 boundary_bottom = Location('sea', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28], [1, 2]) 
@@ -202,6 +204,11 @@ def customer_interaction(customer):
         else:
             print('Please enter a valid response.') 
 
+def print_location(cardinal_direction):
+        for i in range(len(street_list)):
+            if x_coordinate in street_list[i].x_coordinates and y_coordinate in street_list[i].y_coordinates:
+                print('You are facing ' + cardinal_direction + ' on ' + street_list[i].name + '.')
+
 def control_taxi(action):
     
     global is_facing_east
@@ -212,81 +219,99 @@ def control_taxi(action):
     global x_coordinate
     global y_coordinate 
 
-
+    global cardinal_direction
 
     if is_facing_east:
         match action:
             case 'turn left':
+                cardinal_direction = 'North'
                 is_facing_east = False
                 is_facing_north = True
-                print('You are facing North.')
+                print_location(cardinal_direction)
             case 'turn right':
+                cardinal_direction = 'South'
                 is_facing_east = False
                 is_facing_south = True
-                print('You are facing South.')
+                print_location(cardinal_direction)
             case 'accelerate':
                 x_coordinate += 1
                 print('x is now equal to ' + str(x_coordinate))
+                print_location(cardinal_direction)
             case 'reverse':
                 x_coordinate -= 1 
-                print('x is now equal to ' + str(x_coordinate)) 
+                print('x is now equal to ' + str(x_coordinate))
+                print_location(cardinal_direction) 
             case _:
                 'Input a valid action.'    
                 
     elif is_facing_west:
         match action:
             case 'turn left':
+                cardinal_direction = 'South'
                 is_facing_west = False
                 is_facing_south = True
-                print('You are facing South.')
+                print_location(cardinal_direction) 
             case 'turn right':
+                cardinal_direction = 'North'
                 is_facing_west = False
                 is_facing_north = True 
-                print('You are facing North.')
+                print_location(cardinal_direction) 
             case 'accelerate':
                 x_coordinate -= 1
                 print('x is now equal to ' + str(x_coordinate))
+                print_location(cardinal_direction) 
             case 'reverse':
                 x_coordinate += 1 
                 print('x is now equal to ' + str(x_coordinate))
+                print_location(cardinal_direction) 
             case _:
                 'Input a valid action.'    
 
     elif is_facing_north:
         match action:
             case 'turn left':
+                cardinal_direction = 'West'
                 is_facing_north = False
                 is_facing_west = True
                 print('You are facing West.')
+                print_location(cardinal_direction) 
             case 'turn right':
+                cardinal_direction = 'East'
                 is_facing_north = False
                 is_facing_east = True
                 print('You are facing East.')
+                print_location(cardinal_direction) 
             case 'accelerate':
                 y_coordinate += 1
                 print('y is now equal to ' + str(y_coordinate))
+                print_location(cardinal_direction) 
             case 'reverse':
                 y_coordinate -= 1
                 print('y is now equal to ' + str(y_coordinate)) 
+                print_location(cardinal_direction) 
             case _:
                 'Input a valid action.'     
 
     elif is_facing_south:
         match action:
             case 'turn left':
+                cardinal_direction = 'East'
                 is_facing_south = False
                 is_facing_east = True
-                print('You are facing East.')
+                print_location(cardinal_direction) 
             case 'turn right':
+                cardinal_direction = 'West'
                 is_facing_south = False
                 is_facing_west = True
-                print('You are facing West.')
+                print_location(cardinal_direction) 
             case 'accelerate':
                 y_coordinate -= 1
                 print('y is now equal to ' + str(y_coordinate))
+                print_location(cardinal_direction) 
             case 'reverse':
                 y_coordinate += 1
                 print('y is now equal to ' + str(y_coordinate))
+                print_location(cardinal_direction) 
             case _:
                 'Input a valid action.' 
 
@@ -310,7 +335,7 @@ print("""
 
 print('Input an action.')
 print('Possible actions are ' + str(actions))
-print('You are facing East.')
+print_location('East')
 
 print('the length of location_list is ' + str(len(location_list)))
 
@@ -329,9 +354,9 @@ while i < 10:
                 print('You drove into the ' + boundary_list[i].name + '.')
 
     customer = customer_generator()
-    print(customer.first_name)
-    print(customer.last_name)
-    print(customer.destination.name) 
+    #print(customer.first_name)
+    #print(customer.last_name)
+    #print(customer.destination.name) 
 
     
     if customer_interaction_determiner >= 6 and has_customer == False:
@@ -346,7 +371,7 @@ while i < 10:
        view_map()
     elif action == "check position":
         check_position()
-    elif customer_exists == True and action == "break": #this is the customer interaction code -- may wrap in function
+    elif customer_exists == True and action == "break": 
         hit_the_break()
         customer_interaction(customer)      
     elif action == "break":
@@ -357,33 +382,3 @@ while i < 10:
            
                   
 
-
-        
-        
-
-
-
-
-#rudimentary customer functionality -- will rework later
-
-""" customer = {
-    'name' : 'Joe',
-    'directions' :  ['go straight', 'turn right', 'stop here'],
-    'fare' : 0
-}
-
-print("These are the directions: " + str(customer['directions'][0]) + ", " + str(customer['directions'][1]) + ", " + str(customer['directions'][2]))
-
-i = 0
-while i < len(customer['directions']):
-
-    direction = input()
-    if direction == str(customer['directions'][i]):
-        print("Great!")
-        customer['fare'] += 1
-    else:
-        print("You went the wrong way!")
-
-    i += 1
-
-print('Thanks very much!' + ' You get ' + str(customer['fare']) + ' dollars.') """
