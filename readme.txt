@@ -10,6 +10,11 @@ Roadmap:
 1. Impliment movement! 
 -basic movement working
 -will add "set speed option"
+-will add "check left and right mirror" options
+-Will add "look right", "look left" options to help recognize destination. 
+-will add "looking forward" location update info -- *as you traverse the map some text will pop up to indicate
+what the driver sees as they look forward, since when people drive, they are typically looking forward.*
+
 
 2. Create playspace and map -- Will use a grid scheme to create visitable desitnations and boundaries.  
 -Added location class
