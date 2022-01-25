@@ -14,6 +14,7 @@ Roadmap:
 -Will add "look right", "look left" options to help recognize destination. 
 -will add "looking forward" location update info -- *as you traverse the map some text will pop up to indicate
 what the driver sees as they look forward, since when people drive, they are typically looking forward.*
+(partially implimented)
 
 
 2. Create playspace and map -- Will use a grid scheme to create visitable desitnations and boundaries.  
@@ -22,7 +23,8 @@ what the driver sees as they look forward, since when people drive, they are typ
 -Locations will be fixed 
 -Boundaries implimented
 -Need to create intersections and stop lights to make interactions easier . . .
--Will add streetnames 
+*intersections added
+-Added streetnames 
 -Will give the locations names -- e.g. -- "The Library" , "Joe's Pizza" etc. 
 
 3. Customer interactions
@@ -30,7 +32,10 @@ what the driver sees as they look forward, since when people drive, they are typ
 -Will add tip function
 -If time permits, will give customers randomly generated personalities with speech patterns that are dependent on those. 
 
-4. 
+Current Bugs: 
+
+-Bond Street is buggy -- conflicts with the print_location function -- should add special exceptions for bond street
+*the problem is bond street is actually three objects . . . 
 
 
 Current List of Locations for Refference ('O' means they've been added to the game):

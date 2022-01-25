@@ -205,8 +205,14 @@ def customer_interaction(customer):
             print('Please enter a valid response.') 
 
 def print_location(cardinal_direction):
-        for i in range(len(street_list)):
-            if x_coordinate in street_list[i].x_coordinates and y_coordinate in street_list[i].y_coordinates:
+    on_street = []
+    for i in range(len(street_list)):
+        if x_coordinate in street_list[i].x_coordinates and y_coordinate in street_list[i].y_coordinates:
+            on_street.append(street_list[i])
+            if len(on_street) > 1:
+                print('You are facing ' + cardinal_direction + ' at the corner of ' + on_street[0].name + ' and '
+                + on_street[1].name + '.')
+            elif i == len(street_list) - 1:
                 print('You are facing ' + cardinal_direction + ' on ' + street_list[i].name + '.')
 
 def control_taxi(action):
@@ -339,9 +345,9 @@ print_location('East')
 
 print('the length of location_list is ' + str(len(location_list)))
 
-i = 0
+event_count = 0
 
-while i < 10:
+while event_count < 10:
 
     customer_interaction_determiner = random.randint(1, 10)
     print(customer_interaction_determiner)
@@ -359,7 +365,7 @@ while i < 10:
     #print(customer.destination.name) 
 
     
-    if customer_interaction_determiner >= 6 and has_customer == False:
+    if customer_interaction_determiner >= 7 and has_customer == False:
         print("A customer is hailing your taxi!")
         customer_exists = True
 
