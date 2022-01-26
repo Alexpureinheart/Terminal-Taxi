@@ -3,7 +3,7 @@ import random
 #movement variables 
 actions = ['turn left', 'turn right', 'accelerate', 'break', 'reverse', 'view map', 'check position']
 
-x_coordinate = 2
+x_coordinate = 21
 y_coordinate = 4
 
 is_facing_east = True
@@ -210,10 +210,14 @@ def print_location(cardinal_direction):
         if x_coordinate in street_list[i].x_coordinates and y_coordinate in street_list[i].y_coordinates:
             on_street.append(street_list[i])
     if len(on_street) > 1:
-        print('You are facing ' + cardinal_direction + ' at the corner of ' + on_street[0].name + ' and '
+        if on_street[0].name == on_street[1].name:
+            print('You are facing ' + cardinal_direction + ' on ' + on_street[0].name + '.')
+        else:
+            print('You are facing ' + cardinal_direction + ' at the corner of ' + on_street[0].name + ' and '
         + on_street[1].name + '.')
-    else:
+    else: 
         print('You are facing ' + cardinal_direction + ' on ' + on_street[0].name + '.')
+    
 
 def control_taxi(action):
     
