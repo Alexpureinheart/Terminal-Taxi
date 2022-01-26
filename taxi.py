@@ -209,11 +209,11 @@ def print_location(cardinal_direction):
     for i in range(len(street_list)):
         if x_coordinate in street_list[i].x_coordinates and y_coordinate in street_list[i].y_coordinates:
             on_street.append(street_list[i])
-            if len(on_street) > 1:
-                print('You are facing ' + cardinal_direction + ' at the corner of ' + on_street[0].name + ' and '
-                + on_street[1].name + '.')
-            elif i == len(street_list) - 1:
-                print('You are facing ' + cardinal_direction + ' on ' + street_list[i].name + '.')
+    if len(on_street) > 1:
+        print('You are facing ' + cardinal_direction + ' at the corner of ' + on_street[0].name + ' and '
+        + on_street[1].name + '.')
+    else:
+        print('You are facing ' + cardinal_direction + ' on ' + on_street[0].name + '.')
 
 def control_taxi(action):
     
@@ -279,13 +279,11 @@ def control_taxi(action):
                 cardinal_direction = 'West'
                 is_facing_north = False
                 is_facing_west = True
-                print('You are facing West.')
                 print_location(cardinal_direction) 
             case 'turn right':
                 cardinal_direction = 'East'
                 is_facing_north = False
                 is_facing_east = True
-                print('You are facing East.')
                 print_location(cardinal_direction) 
             case 'accelerate':
                 y_coordinate += 1
