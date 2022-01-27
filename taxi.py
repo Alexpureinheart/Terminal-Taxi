@@ -392,7 +392,16 @@ while event_count < 10:
         hit_the_break() 
     else:
         control_taxi(action) 
-        
+    
+    for i in range(len(boundary_list)):
+            if x_coordinate in boundary_list[i].x_coordinates and y_coordinate in boundary_list[i].y_coordinates:
+                if boundary_list[i].name == 'side walk':
+                    event_count += 3
+                    print('You hit a street sign!') 
+                elif boundary_list[i].name == 'sea':
+                    event_count += 10
+                    print('Game Over!')
+                    
            
                   
 
