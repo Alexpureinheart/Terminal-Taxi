@@ -3,7 +3,7 @@ import random
 #movement variables 
 actions = ['turn left', 'turn right', 'accelerate', 'break', 'reverse', 'view map', 'check position']
 
-x_coordinate = 21
+x_coordinate = 2
 y_coordinate = 4
 
 is_facing_east = True
@@ -205,18 +205,31 @@ def customer_interaction(customer):
             print('Please enter a valid response.') 
 
 def print_location(cardinal_direction):
-    on_street = []
-    for i in range(len(street_list)):
-        if x_coordinate in street_list[i].x_coordinates and y_coordinate in street_list[i].y_coordinates:
-            on_street.append(street_list[i])
-    if len(on_street) > 1:
-        if on_street[0].name == on_street[1].name:
+    
+
+    try:
+        on_street = []
+        for i in range(len(street_list)):
+            if x_coordinate in street_list[i].x_coordinates and y_coordinate in street_list[i].y_coordinates:
+                on_street.append(street_list[i])
+        if len(on_street) > 1:
+            if on_street[0].name == on_street[1].name:
+                print('You are facing ' + cardinal_direction + ' on ' + on_street[0].name + '.')
+            else:
+                print('You are facing ' + cardinal_direction + ' at the corner of ' + on_street[0].name + ' and '
+            + on_street[1].name + '.')
+        else: 
             print('You are facing ' + cardinal_direction + ' on ' + on_street[0].name + '.')
-        else:
-            print('You are facing ' + cardinal_direction + ' at the corner of ' + on_street[0].name + ' and '
-        + on_street[1].name + '.')
-    else: 
-        print('You are facing ' + cardinal_direction + ' on ' + on_street[0].name + '.')
+    except:
+        for i in range(len(boundary_list)):
+            if x_coordinate in boundary_list[i].x_coordinates and y_coordinate in boundary_list[i].y_coordinates:
+                if boundary_list[i].name == 'side walk':
+                    print('You drove onto the ' + boundary_list[i].name + '.')
+                elif boundary_list[i].name == 'sea':
+                    print('You drove into the ' + boundary_list[i].name + '.')
+
+    
+
     
 
 def control_taxi(action):
@@ -353,13 +366,6 @@ while event_count < 10:
 
     customer_interaction_determiner = random.randint(1, 10)
     print(customer_interaction_determiner)
-
-    for i in range(len(boundary_list)):
-        if x_coordinate in boundary_list[i].x_coordinates and y_coordinate in boundary_list[i].y_coordinates:
-            if boundary_list[i].name == 'side walk':
-                print('You drove onto the ' + boundary_list[i].name + '.')
-            elif boundary_list[i].name == 'sea':
-                print('You drove into the ' + boundary_list[i].name + '.')
 
     customer = customer_generator()
     #print(customer.first_name)
