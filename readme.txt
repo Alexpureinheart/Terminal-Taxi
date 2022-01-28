@@ -35,7 +35,9 @@ what the driver sees as they look forward, since when people drive, they are typ
 Current Bugs: 
 
 -Bond Street is buggy -- conflicts with the print_location function -- should add special exceptions for bond street
-*the problem is bond street is actually three objects . . . 
+*the problem is bond street is actually three objects . . . *Squashed
+
+-Boundary interactions not possible with passenger. 
 
 
 Current List of Locations for Refference ('O' means they've been added to the game):

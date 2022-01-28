@@ -185,6 +185,7 @@ def customer_interaction(customer):
             print('"Thanks!"')
             has_customer = True
             while has_customer == True:
+                
                 action = input()
                 if action not in actions:
                     print('Input a valid action. Possible actions are ' + str(actions))
@@ -358,14 +359,14 @@ print('Input an action.')
 print('Possible actions are ' + str(actions))
 print_location('East')
 
-print('the length of location_list is ' + str(len(location_list)))
+#print('the length of location_list is ' + str(len(location_list)))
 
 event_count = 0
 
 while event_count < 10:
 
-    customer_interaction_determiner = random.randint(1, 10)
-    print(customer_interaction_determiner)
+    customer_interaction_determiner = random.randint(1, 20)
+    #print('customer interaction determiner = ' + str(customer_interaction_determiner))
 
     customer = customer_generator()
     #print(customer.first_name)
@@ -373,7 +374,7 @@ while event_count < 10:
     #print(customer.destination.name) 
 
     
-    if customer_interaction_determiner >= 7 and has_customer == False:
+    if customer_interaction_determiner >= 17 and has_customer == False:
         print("A customer is hailing your taxi!")
         customer_exists = True
 
