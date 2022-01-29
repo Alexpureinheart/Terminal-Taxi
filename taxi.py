@@ -170,6 +170,8 @@ def customer_interaction(customer):
 
     global x_coordinate
     global y_coordinate
+
+    global event_count
     
     print('The customer gets into your cab.')
     print('"Can you take me to "' + customer.destination.name + '?')
@@ -186,6 +188,10 @@ def customer_interaction(customer):
             has_customer = True
             while has_customer == True:
                 
+                out_of_bound_fail_state()
+                if event_count >= 10:
+                    break 
+
                 action = input()
                 if action not in actions:
                     print('Input a valid action. Possible actions are ' + str(actions))
@@ -222,16 +228,30 @@ def print_location(cardinal_direction):
         else: 
             print('You are facing ' + cardinal_direction + ' on ' + on_street[0].name + '.')
     except:
-        for i in range(len(boundary_list)):
+        out_of_bounds_handler()
+
+    
+
+def out_of_bounds_handler():
+    for i in range(len(boundary_list)):
             if x_coordinate in boundary_list[i].x_coordinates and y_coordinate in boundary_list[i].y_coordinates:
                 if boundary_list[i].name == 'side walk':
                     print('You drove onto the ' + boundary_list[i].name + '.')
                 elif boundary_list[i].name == 'sea':
-                    print('You drove into the ' + boundary_list[i].name + '.')
+                    print('You drove into the ' + boundary_list[i].name + '.') 
 
-    
+def out_of_bound_fail_state():
+    global event_count
 
-    
+    for i in range(len(boundary_list)):
+            if x_coordinate in boundary_list[i].x_coordinates and y_coordinate in boundary_list[i].y_coordinates:
+                if boundary_list[i].name == 'side walk':
+                    event_count += 3
+                    print('You hit a street sign!') 
+                elif boundary_list[i].name == 'sea':
+                    event_count += 10
+                    
+                       
 
 def control_taxi(action):
     
@@ -339,6 +359,7 @@ def control_taxi(action):
 
 
 
+
 #game scripting
 
 print("""
@@ -394,15 +415,14 @@ while event_count < 10:
     else:
         control_taxi(action) 
     
+    
+    out_of_bound_fail_state()
+    
+
     for i in range(len(boundary_list)):
-            if x_coordinate in boundary_list[i].x_coordinates and y_coordinate in boundary_list[i].y_coordinates:
-                if boundary_list[i].name == 'side walk':
-                    event_count += 3
-                    print('You hit a street sign!') 
-                elif boundary_list[i].name == 'sea':
-                    event_count += 10
-                    print('Game Over!')
-                    
+        if x_coordinate in boundary_list[i].x_coordinates and y_coordinate in boundary_list[i].y_coordinates and event_count >= 10:
+            print('Game Over!')
+
            
                   
 

@@ -39,6 +39,8 @@ Current Bugs:
 
 -Boundary interactions not possible with passenger. 
 
+-Harbor boundary doesen't work . . . 
+
 
 Current List of Locations for Refference ('O' means they've been added to the game):
 
