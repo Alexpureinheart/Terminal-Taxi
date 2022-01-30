@@ -35,7 +35,7 @@ class Customer:
         self.first_name = first_name
         self.last_name = last_name
         self.destination = destination
-        self.fare = 0
+        self.fare = 3.25
 
 
 def customer_generator():
@@ -276,10 +276,10 @@ def win_state():
         print("Nice work today! Keep it up!")
     elif len(customers_delivered) > 5:
         print("Not to bad, but you need to be more careful.")
-    elif len(customers_delivered) > 3:
-        print("I think you need to retake the licensing test budy!")
-    elif len(customers_delivered) < 3:
-        print("I don't think your cut out for this.")
+    elif len(customers_delivered) >= 3:
+        print("I think you need to retake the licensing test buddy!")
+    else:
+        print("I don't think you're cut out for this.")
     
 
        
@@ -415,7 +415,8 @@ print_location('East')
 
 event_count = 0
 
-while event_count < 10:
+while event_count < 3:
+
 
     customer_interaction_determiner = random.randint(1, 20)
     #print('customer interaction determiner = ' + str(customer_interaction_determiner))
@@ -456,6 +457,6 @@ while event_count < 10:
         if x_coordinate in boundary_list[i].x_coordinates and y_coordinate in boundary_list[i].y_coordinates and event_count >= 10:
             print('Game Over!')
 
-           
+win_state()
                   
 
