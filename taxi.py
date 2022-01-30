@@ -1,7 +1,7 @@
 import random
 
 #movement variables 
-actions = ['turn left', 'turn right', 'accelerate', 'break', 'reverse', 'view map', 'check position']
+actions = ['turn left', 'turn right', 'accelerate', 'break', 'reverse', 'view map', 'check position', 'ask for destination']
 
 x_coordinate = 2
 y_coordinate = 4
@@ -35,6 +35,8 @@ class Customer:
         self.first_name = first_name
         self.last_name = last_name
         self.destination = destination
+        self.fare = 0
+
 
 def customer_generator():
     global first_names
@@ -144,6 +146,8 @@ QBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 
 def check_position():
     
+    global cardinal_direction
+
     global is_facing_east
     global is_facing_west
     global is_facing_south
@@ -152,15 +156,7 @@ def check_position():
     global x_coordinate
     global y_coordinate 
 
-    if is_facing_east:
-        print('You are facing East.')
-    elif is_facing_west:
-        print('You are facing West.')
-    elif is_facing_south:
-        print('You are facing South.')
-    elif is_facing_north:
-        print('You are facing North.')
-    print('At x: ' + str(x_coordinate) + ' and y: ' + str(y_coordinate) + '.')
+    print_location(cardinal_direction)
     
     for i in range(len(location_list)):
         if x_coordinate in location_list[i].x_coordinates and y_coordinate in location_list[i].y_coordinates:
@@ -189,7 +185,7 @@ def customer_interaction(customer):
             print('The customer gets out.')
             customer_exists = False
             break  
-        elif response == "Sure!":
+        elif response == "Sure":
             print('"Thanks!"')
             has_customer = True
             while has_customer == True:
@@ -208,14 +204,14 @@ def customer_interaction(customer):
                     print('The customer is sitting in the back seat.')
                 elif action == "break":
                     hit_the_break()
-                elif action == "Ask for destination":
-                    print("Please take me to the " + customer.destination.name + ".") 
+                elif action == "ask for destination":
+                    print("Please take me to " + customer.destination.name + ".") 
                 else:
                     control_taxi(action)
-                    money += 1.13
+                    customer.fare += 1.13
                     if x_coordinate in customer.destination.x_coordinates and y_coordinate in customer.destination.y_coordinates:
                         print('"Thanks! Let me out here!"')
-                        print("The customer hands you " + str(money) + " dollars.")
+                        print("The customer hands you " + "$" + str("{:.2f}".format(customer.fare)) + ".")
                         customers_delivered.append(customer)
                         event_count += 1
                         break
@@ -446,7 +442,7 @@ while event_count < 10:
         customer_interaction(customer)      
     elif action == "break":
         hit_the_break()
-    elif action == "Ask for destination":
+    elif action == "ask for destination":
         print("Who are you talking to?")
     else:
         control_taxi(action) 
