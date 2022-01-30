@@ -14,7 +14,10 @@ is_facing_north = False
 has_customer = False
 customer_exists = False
 
+money = 0
+
 customer_interaction_determiner = 0
+customers_delivered = []
 
 cardinal_direction = 'East'
 
@@ -101,7 +104,7 @@ boundary_middle = Location('side walk', [14, 15, 16, 17], [5, 6, 7, 8, 9, 10])
 boundary_middle_right_1 = Location('side walk', [19, 20], [5, 6, 7, 8, 9, 10])
 boundary_middle_right_2 = Location('side walk', [21, 23], [8, 9])
 boundary_right = Location('side walk', [25, 27], [6, 7, 8, 9, 10])
-boundary_lower_right = Location('harbor', [22, 23, 24, 25, 26, 27, 28], [3, 4, 5, 6])
+boundary_lower_right = Location('harbour', [22, 23, 24, 25, 26, 27, 28], [3, 4, 5, 6])
 
 boundary_list = [boundary_top, boundary_bottom, boundary_left, boundary_middle_left, boundary_middle, boundary_middle_right_1,
 boundary_middle_right_2, boundary_right, boundary_lower_right]
@@ -172,13 +175,16 @@ def customer_interaction(customer):
     global y_coordinate
 
     global event_count
+
+    global customers_delivered
+    global money
     
     print('The customer gets into your cab.')
     print('"Can you take me to "' + customer.destination.name + '?')
-    print('Possible responses: "Sorry.", "Sure!"')
+    print('Possible responses: "Sorry", "Sure"')
     while True:
         response = input()   
-        if response == "Sorry.":
+        if response == "Sorry":
             print('"Bummer."')
             print('The customer gets out.')
             customer_exists = False
@@ -201,11 +207,17 @@ def customer_interaction(customer):
                     check_position()
                     print('The customer is sitting in the back seat.')
                 elif action == "break":
-                    hit_the_break() 
+                    hit_the_break()
+                elif action == "Ask for destination":
+                    print("Please take me to the " + customer.destination.name + ".") 
                 else:
                     control_taxi(action)
+                    money += 1.13
                     if x_coordinate in customer.destination.x_coordinates and y_coordinate in customer.destination.y_coordinates:
                         print('"Thanks! Let me out here!"')
+                        print("The customer hands you " + str(money) + " dollars.")
+                        customers_delivered.append(customer)
+                        event_count += 1
                         break
             break
         else:
@@ -236,9 +248,9 @@ def out_of_bounds_handler():
     for i in range(len(boundary_list)):
             if x_coordinate in boundary_list[i].x_coordinates and y_coordinate in boundary_list[i].y_coordinates:
                 if boundary_list[i].name == 'side walk':
-                    print('You drove onto the ' + boundary_list[i].name + '.')
-                elif boundary_list[i].name == 'sea':
-                    print('You drove into the ' + boundary_list[i].name + '.') 
+                    print('You are on the ' + boundary_list[i].name + '.')
+                elif boundary_list[i].name == 'sea' or boundary_list[i].name == 'harbour':
+                    print('You are in the ' + boundary_list[i].name + '.') 
 
 def out_of_bound_fail_state():
     global event_count
@@ -247,11 +259,33 @@ def out_of_bound_fail_state():
             if x_coordinate in boundary_list[i].x_coordinates and y_coordinate in boundary_list[i].y_coordinates:
                 if boundary_list[i].name == 'side walk':
                     event_count += 3
-                    print('You hit a street sign!') 
+                    print('You hit a street sign!')
+                if boundary_list[i].name == 'harbour':
+                    event_count += 3
+                    print('The harbour personnel are yelling at you.')
+                    if event_count >= 10:
+                        print('You drove off a peer.')
                 elif boundary_list[i].name == 'sea':
                     event_count += 10
                     
-                       
+def win_state():
+    global money
+    global customers_delivered
+
+    print("Today, you delivered " + str(len(customers_delivered)) + " customers and made " + str(money) + " dollars.")
+    if len(customers_delivered) >= 10:
+        print("You're the best taxi driver on the road!")
+    elif len(customers_delivered) > 7:
+        print("Nice work today! Keep it up!")
+    elif len(customers_delivered) > 5:
+        print("Not to bad, but you need to be more careful.")
+    elif len(customers_delivered) > 3:
+        print("I think you need to retake the licensing test budy!")
+    elif len(customers_delivered) < 3:
+        print("I don't think your cut out for this.")
+    
+
+       
 
 def control_taxi(action):
     
@@ -411,7 +445,9 @@ while event_count < 10:
         hit_the_break()
         customer_interaction(customer)      
     elif action == "break":
-        hit_the_break() 
+        hit_the_break()
+    elif action == "Ask for destination":
+        print("Who are you talking to?")
     else:
         control_taxi(action) 
     
