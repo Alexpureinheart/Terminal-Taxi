@@ -213,6 +213,7 @@ def customer_interaction(customer):
                         print('"Thanks! Let me out here!"')
                         print("The customer hands you " + "$" + str("{:.2f}".format(customer.fare)) + ".")
                         customers_delivered.append(customer)
+                        money += customer.fare
                         event_count += 1
                         break
             break
@@ -268,7 +269,7 @@ def win_state():
     global money
     global customers_delivered
 
-    print("Today, you delivered " + str(len(customers_delivered)) + " customers and made " + str(money) + " dollars.")
+    print("Today, you delivered " + str(len(customers_delivered)) + " customers and made " + str("{:.2f}".format(money)) + " dollars.")
     if len(customers_delivered) >= 10:
         print("You're the best taxi driver on the road!")
     elif len(customers_delivered) > 7:
