@@ -3,8 +3,8 @@ import random
 #movement variables 
 actions = ['turn left', 'turn right', 'accelerate', 'break', 'reverse', 'view map', 'check position', 'ask for destination']
 
-x_coordinate = 2
-y_coordinate = 4
+x_coordinate = 24
+y_coordinate = 11
 
 is_facing_east = True
 is_facing_west = False
@@ -236,25 +236,24 @@ def print_location(cardinal_direction):
         if len(on_street) > 1:
             if on_street[0].name == on_street[1].name:
                 print('You are facing ' + cardinal_direction + ' on ' + on_street[0].name + '.')
-                if on_street[0] == bond_ave_1 and on_street[1] == bond_ave_2 and turn_notice == False:
+                if on_street[0] == bond_ave_1 and on_street[1] == bond_ave_2 and turn_notice == False and is_facing_north == True:
                     print('You see you a right turn ahead.')
                     turn_notice = True
-                elif on_street[0] == bond_ave_2 and on_street[1] == bond_ave_3 and turn_notice == True:
+                elif on_street[0] == bond_ave_2 and on_street[1] == bond_ave_3 and turn_notice == True and is_facing_east == True:
                     print('You see a left turn ahead.')
                     turn_notice = False
-                elif on_street[0] == bond_ave_3 and on_street[1] == bond_ave_2 and turn_notice == False:
+                elif on_street[0] == bond_ave_2 and on_street[1] == bond_ave_3 and turn_notice == False and is_facing_south == True:
                     print('You see a right turn ahead.')
                     turn_notice = True
-                elif on_street[0] == bond_ave_2 and on_street[1] == bond_ave_1 and turn_notice == True:
+                elif on_street[0] == bond_ave_1 and on_street[1] == bond_ave_2 and turn_notice == True and is_facing_west == True:
                     print('You see a left turn ahead.')
                     turn_notice = False
             else:
                 print('You are facing ' + cardinal_direction + ' at the corner of ' + on_street[0].name + ' and '
             + on_street[1].name + '.')
-            turn_notice = False
         else: 
             print('You are facing ' + cardinal_direction + ' on ' + on_street[0].name + '.')
-            turn_notice = False
+            
     except:
         out_of_bounds_handler()
 
@@ -274,10 +273,10 @@ def out_of_bound_fail_state():
     for i in range(len(boundary_list)):
             if x_coordinate in boundary_list[i].x_coordinates and y_coordinate in boundary_list[i].y_coordinates:
                 if boundary_list[i].name == 'side walk':
-                    event_count += 3
+                    event_count += 4
                     print('You hit a street sign!')
                 if boundary_list[i].name == 'harbour':
-                    event_count += 3
+                    event_count += 4
                     print('The harbour personnel are yelling at you.')
                     if event_count >= 10:
                         print('You drove off a pier.')
