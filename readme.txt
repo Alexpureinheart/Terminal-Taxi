@@ -33,18 +33,9 @@ what the driver sees as they look forward, since when people drive, they are typ
 -If time permits, will give customers randomly generated personalities with speech patterns that are dependent on those. 
 
 Current Bugs: 
--A customer my ask for a destination they are already at. 
--
 
-Squashed Bugs:
 -Bond Street is buggy -- conflicts with the print_location function -- should add special exceptions for bond street
-*the problem is bond street is actually three objects . . . *Squashed
-
--Boundary interactions not possible with passenger. *Squashed  
-
--Harbor boundary doesen't work . . . *Squashed
-
-
+*the problem is bond street is actually three objects . . .  SQUASHED! 
 
 
 Current List of Locations for Refference ('O' means they've been added to the game):

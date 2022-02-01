@@ -1,10 +1,10 @@
 import random
 
 #movement variables 
-actions = ['turn left', 'turn right', 'accelerate', 'break', 'reverse', 'view map', 'check position', 'ask for destination']
+actions = ['turn left', 'turn right', 'accelerate', 'break', 'reverse', 'view map', 'check position', 'ask for destination', 'exit']
 
-x_coordinate = 24
-y_coordinate = 11
+x_coordinate = 2
+y_coordinate = 4
 
 is_facing_east = True
 is_facing_west = False
@@ -182,7 +182,7 @@ def customer_interaction(customer):
     print('Possible responses: "Sorry", "Sure"')
     while True:
         response = input()
-        action = format_action(response)   
+        response = format_action(response)   
         if response == "sorry":
             print('"Bummer."')
             print('The customer gets out.')
@@ -212,7 +212,7 @@ def customer_interaction(customer):
                     print("Please take me to " + customer.destination.name + ".") 
                 else:
                     control_taxi(action)
-                    customer.fare += 1.13
+                    customer.fare += .37
                     if x_coordinate in customer.destination.x_coordinates and y_coordinate in customer.destination.y_coordinates:
                         print('"Thanks! Let me out here!"')
                         print("The customer hands you " + "$" + str("{:.2f}".format(customer.fare)) + ".")
@@ -436,7 +436,7 @@ print_location('East')
 
 event_count = 0
 
-while event_count < 3:
+while event_count < 10:
 
 
     customer_interaction_determiner = random.randint(1, 20)
@@ -468,6 +468,8 @@ while event_count < 3:
         hit_the_break()
     elif action == "ask for destination":
         print("Who are you talking to?")
+    elif action == 'exit':
+        event_count = 10
     else:
         control_taxi(action) 
     
