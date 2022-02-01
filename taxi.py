@@ -14,6 +14,8 @@ is_facing_north = False
 has_customer = False
 customer_exists = False
 
+turn_notice = False
+
 money = 0
 
 customer_interaction_determiner = 0
@@ -224,6 +226,7 @@ def customer_interaction(customer):
 
 def print_location(cardinal_direction):
     
+    global turn_notice
 
     try:
         on_street = []
@@ -233,11 +236,25 @@ def print_location(cardinal_direction):
         if len(on_street) > 1:
             if on_street[0].name == on_street[1].name:
                 print('You are facing ' + cardinal_direction + ' on ' + on_street[0].name + '.')
+                if on_street[0] == bond_ave_1 and on_street[1] == bond_ave_2 and turn_notice == False:
+                    print('You see you a right turn ahead.')
+                    turn_notice = True
+                elif on_street[0] == bond_ave_2 and on_street[1] == bond_ave_3 and turn_notice == True:
+                    print('You see a left turn ahead.')
+                    turn_notice = False
+                elif on_street[0] == bond_ave_3 and on_street[1] == bond_ave_2 and turn_notice == False:
+                    print('You see a right turn ahead.')
+                    turn_notice = True
+                elif on_street[0] == bond_ave_2 and on_street[1] == bond_ave_1 and turn_notice == True:
+                    print('You see a left turn ahead.')
+                    turn_notice = False
             else:
                 print('You are facing ' + cardinal_direction + ' at the corner of ' + on_street[0].name + ' and '
             + on_street[1].name + '.')
+            turn_notice = False
         else: 
             print('You are facing ' + cardinal_direction + ' on ' + on_street[0].name + '.')
+            turn_notice = False
     except:
         out_of_bounds_handler()
 
