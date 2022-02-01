@@ -61,26 +61,26 @@ class Location:
     def get_y_coordinate(self):
         return self._y_coordinates
 
-location_1 = Location('location 1', [3, 4, 5], [10, 11, 12, 13, 14])
-location_2 = Location('location 2', [6, 7, 8], [10, 11, 12, 13])
-location_3 = Location('location 3', [9, 10, 11, 12, 13], [10, 11, 12, 13])
-location_4 = Location('location 4', [15, 16, 17], [10, 11, 12, 13, 14])
-location_5 = Location('location 5', [18, 19, 20, 21], [10, 11, 12, 13])
-location_6 = Location('location 6', [22, 23, 24], [10, 11, 12, 13])
-location_7 = Location('location 7', [25, 26, 27], [10, 11, 12, 13])
-location_8 = Location('location 8', [2, 3, 4, 5], [7, 8, 9])
-location_9 = Location('location 9', [2, 3, 4, 5], [4, 5, 6])
-location_10 = Location('location 10', [6, 7, 8, 9], [6, 7, 8])
-location_11 = Location('location 11', [8, 9, 10], [7, 8])
-location_12 = Location('location 12', [11, 12, 13, 14], [7, 8, 9])
-location_13 = Location('location 13', [9, 10, 11, 12, 13], [4, 5, 6])
-location_14 = Location('location 14', [13, 14, 15, 16, 17, 18], [4, 5, 6, 7, 8, 9, 10])
-location_15 = Location('location 15', [18, 19, 20], [7, 8, 9])
-location_16 = Location('location 16', [19, 20, 21], [4, 5, 6])
-location_17 = Location('location 17', [21, 22, 23, 24], [7, 8, 9, 10, 11])
-location_18 = Location('location 18', [24, 25, 26, 27, 28], [6, 7, 8, 9])
-location_19 = Location('location 19', [7, 8, 9, 10, 11, 12, 13, 14, 15, 16], [2, 3, 4])
-location_20 = Location('location 20', [21, 22, 23, 24, 25, 26, 27], [1, 2, 3, 4, 5, 6, 7])
+location_1 = Location("Bob's Books", [3, 4, 5], [10, 11, 12, 13, 14])
+location_2 = Location('Pizza Palace', [6, 7, 8], [10, 11, 12, 13])
+location_3 = Location('The Waterfront Library', [9, 10, 11, 12, 13], [10, 11, 12, 13])
+location_4 = Location("Manuel the Dentist's", [15, 16, 17], [10, 11, 12, 13, 14])
+location_5 = Location('Dope Beatz', [18, 19, 20, 21], [10, 11, 12, 13])
+location_6 = Location('The Seashore Appartments', [22, 23, 24], [10, 11, 12, 13])
+location_7 = Location('The Seashore Lofts', [25, 26, 27], [10, 11, 12, 13])
+location_8 = Location('Burger Meister', [2, 3, 4, 5], [7, 8, 9])
+location_9 = Location("Sally's Sweet Suites", [2, 3, 4, 5], [4, 5, 6])
+location_10 = Location('Green Street Sports', [6, 7, 8, 9], [6, 7, 8])
+location_11 = Location("N'ice! Cream'", [8, 9, 10], [7, 8])
+location_12 = Location("Dante's Deck Chairs", [11, 12, 13, 14], [7, 8, 9])
+location_13 = Location('Waterfront Bicycle Rentals', [9, 10, 11, 12, 13], [4, 5, 6])
+location_14 = Location('St. Busta Park', [13, 14, 15, 16, 17, 18], [4, 5, 6, 7, 8, 9, 10])
+location_15 = Location("Kyle's Curry Goat", [18, 19, 20], [7, 8, 9])
+location_16 = Location("Shanty's Sea Shack", [19, 20, 21], [4, 5, 6])
+location_17 = Location('Waterfront Post Office', [21, 22, 23, 24], [7, 8, 9, 10, 11])
+location_18 = Location("Pop-in Shoppin'", [24, 25, 26, 27, 28], [6, 7, 8, 9])
+location_19 = Location('The Waterfront Pier', [7, 8, 9, 10, 11, 12, 13, 14, 15, 16], [2, 3, 4])
+location_20 = Location('The Waterfront Harbor', [21, 22, 23, 24, 25, 26, 27], [1, 2, 3, 4, 5, 6, 7])
 
 location_list = [location_1, location_2, location_3, location_4, location_5, location_6, location_7,
 location_8, location_9, location_10, location_11, location_12, location_13, location_14, location_15,
@@ -119,26 +119,26 @@ def view_map():
         
                                     WATERFRONT DISTRICT 
 @#MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM#@   
-@6       ________                                    ______                                         g@  
-@6      |        |   _____     _______________      |      |      ________       ______   _____     g@
-@6      |    1   |  |  2  |   |      3        |     |  4   |     |   5    |     |  6   | |  7  |    g@
-@6      |________|  |_____|   |_______________|     |______|     |________|     |______| |_____|    g@
-@6<<TO FINANCIAL DISTRICT<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>TO HIGHWAY>>>g@
-@6                                    Oak St.                                                       g@
-@<<<| S |<<<<<<<<<<<<<<<<| G |<<<<<<<<<<<<<<<| L |<<<<  <<<<<| S |<<<<<<<<<<<<<<<<<|   |>>>>>>>>>>>>g@
-@6  | i | ____       ___ | r |          ___  | i |  __| |__  | a | ___    __| |__  |   | ___        g@
-@6  | l ||    |     |___|| e |___      |12 | | t |_|  ___  |_| x ||   |  |___17__| |   ||   |       g@
-@6  | v || 8  |    |    || e |11 |     |___| | t  _  /   \  _  o || 15|   >>>>>>>>>|   ||   |___    g@
-@6  | e ||____|__  | 10 || n |___|           | l | | \___/ | | n ||___|  | Bond Ave.   ||  18   |   g@
-@6  | r ||  9    | |____||   |   ___________ | e | |__   __| |   |  ____ |   |>>>>>>>>>>|_______|   g@
-@6  |   ||_______|       | R |  |__13_______||   |    | | 14 | W | |_16_||   |  ___________________ g@
-@6 _| S |>>>>>>>>>>>>>>>>| d |>>>>>>>>>>>>>>>| S |>>>>> >>>>>| y |>>>>>>>|   | |                   |g@
-@6    t                         Sandy Blvd.    t                               |        20         |g@
-@6 __START >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|                   |g@                                                                                 
-@6 ____________________________________________________________________________|___________________|g@
-@6 ~~~~~~~~~~~~~~~~~~~~~~|______   19    _______________|~~~~~~~~~~~~~~~~~~~~~~~~~~~~|        |~~~~~g@
-@6 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|       |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|        |~~~~~g@
-QBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBQ
+@6       ________                                    ______                                         g@  1. Bob's Books
+@6      |        |   _____     _______________      |      |      ________       ______   _____     g@  2. Pizza Palace
+@6      |    1   |  |  2  |   |      3        |     |  4   |     |   5    |     |  6   | |  7  |    g@  3. Waterfront Library
+@6      |________|  |_____|   |_______________|     |______|     |________|     |______| |_____|    g@  4. Manuel the Dentist
+@6<<TO FINANCIAL DISTRICT<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>TO HIGHWAY>>>g@  5. Dope Beatz
+@6                                    Oak St.                                                       g@  6. Seashore Appts.
+@<<<| S |<<<<<<<<<<<<<<<<| G |<<<<<<<<<<<<<<<| L |<<<<  <<<<<| S |<<<<<<<<<<<<<<<<<|   |>>>>>>>>>>>>g@  7. Seashore Lofts 
+@6  | i | ____       ___ | r |          ___  | i |  __| |__  | a | ___    __| |__  |   | ___        g@  8. Burger Meister
+@6  | l ||    |     |___|| e |___      |12 | | t |_|  ___  |_| x ||   |  |___17__| |   ||   |       g@  9. Sally's Sweet Suites
+@6  | v || 8  |    |    || e |11 |     |___| | t  _  /   \  _  o || 15|   >>>>>>>>>|   ||   |___    g@  10.Green Street Sports 
+@6  | e ||____|__  | 10 || n |___|           | l | | \___/ | | n ||___|  | Bond Ave.   ||  18   |   g@  11.N'ice! Cream
+@6  | r ||  9    | |____||   |   ___________ | e | |__   __| |   |  ____ |   |>>>>>>>>>>|_______|   g@  12.Dante's Deck Chairs 
+@6  |   ||_______|       | R |  |__13_______||   |    | | 14 | W | |_16_||   |  ___________________ g@  13.Waterfront Bicycle Rentals 
+@6 _| S |>>>>>>>>>>>>>>>>| d |>>>>>>>>>>>>>>>| S |>>>>> >>>>>| y |>>>>>>>|   | |                   |g@  14.St. Busta Park
+@6    t                         Sandy Blvd.    t                               |        20         |g@  15.Kyle's Curry Goat
+@6 __START >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|                   |g@  16.Shanty's Sea Shack                                                                               
+@6 ____________________________________________________________________________|___________________|g@  17.Waterfront Post Office 
+@6 ~~~~~~~~~~~~~~~~~~~~~~|______   19    _______________|~~~~~~~~~~~~~~~~~~~~~~~~~~~~|        |~~~~~g@  18.Pop-in Shoppin'
+@6 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|       |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|        |~~~~~g@  19.Waterfront Pier
+QBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBQ  20.Waterfront Harbor
         
         
         """)
@@ -176,7 +176,7 @@ def customer_interaction(customer):
     global money
     
     print('The customer gets into your cab.')
-    print('"Can you take me to "' + customer.destination.name + '?')
+    print('"Can you take me to ' + customer.destination.name +'"?')
     print('Possible responses: "Sorry", "Sure"')
     while True:
         response = input()
