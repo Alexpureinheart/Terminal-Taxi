@@ -15,6 +15,7 @@ has_customer = False
 customer_exists = False
 
 turn_notice = False
+fail_state = False
 
 money = 0
 
@@ -44,9 +45,14 @@ def customer_generator():
     global first_names
     global last_names
     global location_list
+    destination = location_list[random.randint(0, len(location_list) - 1)]
+
+    while x_coordinate in destination.x_coordinates and y_coordinate in destination.y_coordinates :
+        destination = location_list[random.randint(0, len(location_list) - 1)]
+
     
     return Customer(first_names[random.randint(0, len(first_names) - 1)], last_names[random.randint(0, len(last_names) - 1)],
-    location_list[random.randint(0, len(location_list) - 1)])
+    destination)
  
 
 #locations
@@ -167,6 +173,10 @@ def check_position():
 def hit_the_break():
     print('You have stopped.')
 
+def exit():
+    global event_count
+    event_count = 10 
+
 def customer_interaction(customer):
 
     global x_coordinate
@@ -209,7 +219,9 @@ def customer_interaction(customer):
                 elif action == "break":
                     hit_the_break()
                 elif action == "ask for destination":
-                    print("Please take me to " + customer.destination.name + ".") 
+                    print("Please take me to " + customer.destination.name + ".")
+                elif action == 'exit':
+                    exit() 
                 else:
                     control_taxi(action)
                     customer.fare += .37
@@ -269,19 +281,26 @@ def out_of_bounds_handler():
 
 def out_of_bound_fail_state():
     global event_count
+    global fail_state
+
+    sidwalk_events = ['You hit a street sign!', 'You hit a fire hydrant!', 'You hit a pedestrian!', 'You hit a hotdog truck!', 'You hit a bench!']
+    harbor_events = ['The harbour personnel are yelling at you!', 'You hit a forklift!', 'You hit a crate!', 'You ran into a shipping container!', 'You hit a dock worker!']
 
     for i in range(len(boundary_list)):
             if x_coordinate in boundary_list[i].x_coordinates and y_coordinate in boundary_list[i].y_coordinates:
                 if boundary_list[i].name == 'side walk':
                     event_count += 4
-                    print('You hit a street sign!')
+                    print(sidwalk_events[random.randint(0, len(sidwalk_events) - 1)])
+                    if event_count >= 10:
+                        print('The police stopped your vehicle and have taken you in for questioning!')
                 if boundary_list[i].name == 'harbour':
                     event_count += 4
-                    print('The harbour personnel are yelling at you.')
+                    print(harbor_events[random.randint(0, len(harbor_events) - 1)])
                     if event_count >= 10:
-                        print('You drove off a pier.')
+                        print('You drove off a pier!')
                 elif boundary_list[i].name == 'sea':
                     event_count += 10
+    fail_state == True
                     
 def win_state():
     global money
@@ -300,8 +319,11 @@ def win_state():
         print("I don't think you're cut out for this.")
     
     print("Customers Delivered: ")
-    for customer in customers_delivered:
-        print(customer.first_name + " " + customer.last_name + " to " + customer.destination.name + '  --  ' + "$" + str("{:.2f}".format(customer.fare)))
+    if len(customers_delivered) == 0:
+        print('None.')
+    else:
+        for customer in customers_delivered:
+            print(customer.first_name + " " + customer.last_name + " to " + customer.destination.name + '  --  ' + "$" + str("{:.2f}".format(customer.fare)))
     
 
 def format_action(action):
@@ -473,12 +495,12 @@ while event_count < 10:
     elif action == "ask for destination":
         print("Who are you talking to?")
     elif action == 'exit':
-        event_count = 10
+        exit()
     else:
         control_taxi(action) 
     
-    
-    out_of_bound_fail_state()
+    if fail_state == False:
+        out_of_bound_fail_state()
     
 
     for i in range(len(boundary_list)):
