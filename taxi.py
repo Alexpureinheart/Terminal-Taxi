@@ -162,7 +162,7 @@ def check_position():
     
     for i in range(len(location_list)):
         if x_coordinate in location_list[i].x_coordinates and y_coordinate in location_list[i].y_coordinates:
-            print('You are at ' + location_list[i].name + '.')
+            print('You see ' + location_list[i].name + '.')
          
 def hit_the_break():
     print('You have stopped.')
@@ -287,7 +287,7 @@ def win_state():
     global money
     global customers_delivered
 
-    print("Today, you delivered " + str(len(customers_delivered)) + " customers and made " + str("{:.2f}".format(money)) + " dollars.")
+    print("Today, you delivered " + str(len(customers_delivered)) + " customers and made " + '$' + str("{:.2f}".format(money)) + ".")
     if len(customers_delivered) >= 10:
         print("You're the best taxi driver on the road!")
     elif len(customers_delivered) > 7:
@@ -298,6 +298,10 @@ def win_state():
         print("I think you need to retake the licensing test buddy!")
     else:
         print("I don't think you're cut out for this.")
+    
+    print("Customers Delivered: ")
+    for customer in customers_delivered:
+        print(customer.first_name + " " + customer.last_name + " to " + customer.destination.name + '  --  ' + "$" + str("{:.2f}".format(customer.fare)))
     
 
 def format_action(action):
@@ -331,11 +335,11 @@ def control_taxi(action):
                 print_location(cardinal_direction)
             case 'accelerate':
                 x_coordinate += 1
-                print('x is now equal to ' + str(x_coordinate))
+                #print('x is now equal to ' + str(x_coordinate))
                 print_location(cardinal_direction)
             case 'reverse':
                 x_coordinate -= 1 
-                print('x is now equal to ' + str(x_coordinate))
+                #print('x is now equal to ' + str(x_coordinate))
                 print_location(cardinal_direction) 
             case _:
                 'Input a valid action.'    
@@ -354,11 +358,11 @@ def control_taxi(action):
                 print_location(cardinal_direction) 
             case 'accelerate':
                 x_coordinate -= 1
-                print('x is now equal to ' + str(x_coordinate))
+                #print('x is now equal to ' + str(x_coordinate))
                 print_location(cardinal_direction) 
             case 'reverse':
                 x_coordinate += 1 
-                print('x is now equal to ' + str(x_coordinate))
+                #print('x is now equal to ' + str(x_coordinate))
                 print_location(cardinal_direction) 
             case _:
                 'Input a valid action.'    
@@ -377,11 +381,11 @@ def control_taxi(action):
                 print_location(cardinal_direction) 
             case 'accelerate':
                 y_coordinate += 1
-                print('y is now equal to ' + str(y_coordinate))
+                #print('y is now equal to ' + str(y_coordinate))
                 print_location(cardinal_direction) 
             case 'reverse':
                 y_coordinate -= 1
-                print('y is now equal to ' + str(y_coordinate)) 
+                #print('y is now equal to ' + str(y_coordinate)) 
                 print_location(cardinal_direction) 
             case _:
                 'Input a valid action.'     
@@ -400,11 +404,11 @@ def control_taxi(action):
                 print_location(cardinal_direction) 
             case 'accelerate':
                 y_coordinate -= 1
-                print('y is now equal to ' + str(y_coordinate))
+                #print('y is now equal to ' + str(y_coordinate))
                 print_location(cardinal_direction) 
             case 'reverse':
                 y_coordinate += 1
-                print('y is now equal to ' + str(y_coordinate))
+                #print('y is now equal to ' + str(y_coordinate))
                 print_location(cardinal_direction) 
             case _:
                 'Input a valid action.' 
