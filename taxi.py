@@ -124,7 +124,7 @@ def view_map():
 @6      |    1   |  |  2  |   |      3        |     |  4   |     |   5    |     |  6   | |  7  |    g@  3. Waterfront Library
 @6      |________|  |_____|   |_______________|     |______|     |________|     |______| |_____|    g@  4. Manuel the Dentist
 @6<<TO FINANCIAL DISTRICT<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>TO HIGHWAY>>>g@  5. Dope Beatz
-@6                                    Oak St.                                                       g@  6. Seashore Appts.
+@6                                    Oak St.                                                       g@  6. Seashore Apts.
 @<<<| S |<<<<<<<<<<<<<<<<| G |<<<<<<<<<<<<<<<| L |<<<<  <<<<<| S |<<<<<<<<<<<<<<<<<|   |>>>>>>>>>>>>g@  7. Seashore Lofts 
 @6  | i | ____       ___ | r |          ___  | i |  __| |__  | a | ___    __| |__  |   | ___        g@  8. Burger Meister
 @6  | l ||    |     |___|| e |___      |12 | | t |_|  ___  |_| x ||   |  |___17__| |   ||   |       g@  9. Sally's Sweet Suites
