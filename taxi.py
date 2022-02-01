@@ -179,13 +179,14 @@ def customer_interaction(customer):
     print('"Can you take me to "' + customer.destination.name + '?')
     print('Possible responses: "Sorry", "Sure"')
     while True:
-        response = input()   
-        if response == "Sorry":
+        response = input()
+        action = format_action(response)   
+        if response == "sorry":
             print('"Bummer."')
             print('The customer gets out.')
             customer_exists = False
             break  
-        elif response == "Sure":
+        elif response == "sure":
             print('"Thanks!"')
             has_customer = True
             while has_customer == True:
@@ -195,6 +196,7 @@ def customer_interaction(customer):
                     break 
 
                 action = input()
+                action = format_action(action)
                 if action not in actions:
                     print('Input a valid action. Possible actions are ' + str(actions))
                 elif action == "view map":  
@@ -261,7 +263,7 @@ def out_of_bound_fail_state():
                     event_count += 3
                     print('The harbour personnel are yelling at you.')
                     if event_count >= 10:
-                        print('You drove off a peer.')
+                        print('You drove off a pier.')
                 elif boundary_list[i].name == 'sea':
                     event_count += 10
                     
@@ -282,7 +284,10 @@ def win_state():
         print("I don't think you're cut out for this.")
     
 
-       
+def format_action(action):
+    action = action.lower()
+    action = action.strip()
+    return action       
 
 def control_taxi(action):
     
@@ -432,6 +437,7 @@ while event_count < 3:
         customer_exists = True
 
     action = input()
+    action = format_action(action)
 
     if action not in actions:
         print('Input a valid action. Possible actions are ' + str(actions))
