@@ -1,3 +1,36 @@
+ ________  ______   _______   ________   __   ________   ________   __
+|__    __||   ___| |   __  | |        | |  | |     |  | |   __   | |  |
+   |  |   |   ___| |  |__  | |  |  |  | |  | |  |  |  | |  |__|  | |  |____
+   |__|   |______| |__||__|  |__|__|__| |__| |__|_____| |__|  |__| |_______|
+ ________  ________  ___   ___    __   _____________  _________
+/__   __/ /  __    / \  \ /  /   /  /  ____________  /    \    \ 
+  /  /   /  /__/  /   /     /   /  /   ________  ___/      \ ___\_________ 
+ /__/   /__/  /__/   /__/ \__\ /__/    ______   /_________________________/
+                                                    \__/         \__/ 
+Welcome to Terminal Taxi! The text-based taxi-simulation experience you 
+never knew you wanted! The goal is simple, you must do your best to deliver
+10 customers to their destinations safe and sound. In order to get all 10
+customers to their destinations, you're going to have to drive carefully and
+that means, no accidents see? This game takes place in the good ol' days so 
+there's no fancy-shmancy smart phones. You'll have to figure out where you 
+are by looking at a map the old-school way.
+
+Here's what you need to know to play:
+
+1. Type "accelerate", "reverse", "break", "turn left" or "turn right" to control your taxi. 
+2. The taxi uses TANK CONTROLS, so it moves like a tank, just like a real taxi!
+3. Type "view map" to see the map!
+4. The map dosen't show your location cause it's an old-timey paper map, type "check position" to take
+    in your surroundings and figure out where you are. 
+5. From time to time customers will hail your taxi, if one does you can type "break" to pick them up.
+6. Customers will pay their fares and brazenly leap from your taxi upon arrival at their destination.
+7. If you forget where a customer wants to go type "ask for destination" to have them remind you.
+8. The mayor of the town preemptively put up signs for a highway and a financial district, but they
+    haven't actually been built yet. 
+8. Type "exit" to exit the game.
+9. Type "view commands" to view commands. 
+10. Type "view instructions" to see this dialogue again.
+
 This is the readme for my first portfolio project for the CS course in codecademy, wherein I am tasked with
 making a terminal game using python.
 
@@ -5,61 +38,24 @@ Name: Terminal Taxi
 Description: A text-based taxi driving simulator for terminal written in Python 3.10.1 
 Installation: dunno yet . . .
 
-Roadmap:
+Details:
 
-1. Impliment movement! 
--basic movement working
--will add "set speed option"
--will add "check left and right mirror" options
--Will add "look right", "look left" options to help recognize destination. 
--will add "looking forward" location update info -- *as you traverse the map some text will pop up to indicate
-what the driver sees as they look forward, since when people drive, they are typically looking forward.*
-(partially implimented)
+1. Movement
+-Movement uses tank controls, this is obviously unrealistic but I think it makes the game easier to play. 
+-Boundaries and locations are objects which have set coordinants, every time the player moves x or y is incremented accordingly.
+-Interactions happen based on whether or not player's coordinates match up to the location object's. 
 
 
-2. Create playspace and map -- Will use a grid scheme to create visitable desitnations and boundaries.  
--Added location class
--Added basic logic for location detection using "check position" command in-game. 
--Locations will be fixed 
--Boundaries implimented
--Need to create intersections and stop lights to make interactions easier . . .
-*intersections added
--Added streetnames 
--Will give the locations names -- e.g. -- "The Library" , "Joe's Pizza" etc. 
+2. Playspace and map
+-The locations and boundaries have been mapped out using a grid system based on the map in game.
+-The in-game map accurately represents the play space.  
 
 3. Customer interactions
--Customers are randomly generated with names and destinations . . . 
--Will add tip function
--If time permits, will give customers randomly generated personalities with speech patterns that are dependent on those. 
-
-Current Bugs: 
-
--Bond Street is buggy -- conflicts with the print_location function -- should add special exceptions for bond street
-*the problem is bond street is actually three objects . . .  SQUASHED! 
-
-
-Current List of Locations for Refference ('O' means they've been added to the game):
-
-Starting Position - X: 2, Y: 4
-
-Location 1 - X: 3-5, Y: 10-14 			O
-Location 2 - X: 6-8, Y: 10-13 			O
-Location 3 - X: 9-13, Y: 10-13			O
-Location 4 - X: 15-17, Y: 10-14		 	O	
-Location 5 - X: 18-21, Y: 10-13			O
-Location 6 - X: 22-24 Y: 10-13			O
-Location 7 - X: 25-27 Y: 10-13			O
-Location 8 - X: 2-5 Y: 7-9			    O
-Location 9 - X: 2-5 Y: 4-6			    O
-Location 10 - X: 6-9 Y: 6-8			    O
-Location 11 - X: 8-10 Y: 7-8			O		
-Location 12 - X: 11-14 Y: 7-9			O
-Location 13 - X: 9-13 Y: 4-6			O		
-Location 14 - X: 13-18 Y: 4-10			O
-Location 15 - X: 18-20 Y: 7-9			O
-Location 16 - X: 19-21 Y: 4-6			O
-Location 17 - X: 21-24 Y: 7-11			O
-Location 18 - X: 24-28 Y: 6-9			O
-Location 19 - X: 7-16 Y: 2-4 			O
-Location 20 - X: 21-27 Y: 1-7			O
-
+-Customers are randomly generated with first and last names and are randomly assigned a destination.  
+ 
+4. Win/Fail conditions
+-The game runs on a single while loop that is set to break when an event counter reaches 10 or higher players are then assessed and ranked.
+-Delivering a customer counts as one event, while driving on to the sidewalk or into the harbor counts as 4. 
+-Driving into the sea counts as 10, effectively ending the game.
+-To get the highest rank you need to deliver all 10 customers without causeing any accidents. 
+-The player can exit at anytime and will recieve an assessment based on how many customers they've delivered so far. 
