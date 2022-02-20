@@ -31,8 +31,11 @@ Here's what you need to know to play:
 9. Type "view commands" to view commands. 
 10. Type "view instructions" to see this dialogue again.
 
-This is the readme for my first portfolio project for the CS course in codecademy, wherein I am tasked with
-making a terminal game using python.
+**taken from the in-game instructions
+
+This is the readme for my first portfolio project for the Computer Science course in codecademy, wherein I am tasked with
+making a terminal game using python. I wanted to make something kind of unique and at least a bit technically interesting. 
+Hopefully I've achieved that here.
 
 Name: Terminal Taxi
 Description: A text-based taxi driving simulator for terminal written in Python 3.10.1 
@@ -44,7 +47,6 @@ Details:
 -Movement uses tank controls, this is obviously unrealistic but I think it makes the game easier to play. 
 -Boundaries and locations are objects which have set coordinants, every time the player moves x or y is incremented accordingly.
 -Interactions happen based on whether or not player's coordinates match up to the location object's. 
-
 
 2. Playspace and map
 -The locations and boundaries have been mapped out using a grid system based on the map in game.
@@ -58,4 +60,6 @@ Details:
 -Delivering a customer counts as one event, while driving on to the sidewalk or into the harbor counts as 4. 
 -Driving into the sea counts as 10, effectively ending the game.
 -To get the highest rank you need to deliver all 10 customers without causeing any accidents. 
--The player can exit at anytime and will recieve an assessment based on how many customers they've delivered so far. 
+-The player can exit at anytime and will recieve an assessment based on how many customers they've delivered so far.
+
+This is the first time I've ever written a readme. Hope it's useful! 
